@@ -34,6 +34,7 @@ function webmap_options() {
   }
   ?>
   <h1><?php echo __('Webmap Options', 'webmap_net7'); ?></h1>
+  <p>Webmapp is a plugin developed by <a href="http://webmapp.it" target="_blank">WEBMAPP s.r.l.</a></p>
   <form method="post" action="options.php">
   <?php
   settings_fields('net7-webmap-group');
