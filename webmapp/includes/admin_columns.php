@@ -11,12 +11,21 @@ function ac_custom_column_settings_9308c7ca() {
 	ac_register_columns( 'wp-taxonomy_webmapp_category', array(
 		array(
 			'columns' => array(
+				'5a688ed832ac4' => array(
+					'type' => 'column-term_parent',
+					'label' => 'Genitore',
+					'width' => '',
+					'width_unit' => '%',
+					'term_property' => '',
+					'edit' => 'on',
+					'name' => '5a688ed832ac4'
+				),
 				'name' => array(
 					'type' => 'name',
 					'label' => 'Nome',
 					'width' => '',
 					'width_unit' => '%',
-					'edit' => 'off',
+					'edit' => 'on',
 					'sort' => 'on',
 					'name' => 'name'
 				),
@@ -25,18 +34,9 @@ function ac_custom_column_settings_9308c7ca() {
 					'label' => 'Slug',
 					'width' => '',
 					'width_unit' => '%',
-					'edit' => 'off',
+					'edit' => 'on',
 					'sort' => 'on',
 					'name' => 'slug'
-				),
-				'description' => array(
-					'type' => 'description',
-					'label' => 'Descrizione',
-					'width' => '',
-					'width_unit' => '%',
-					'edit' => 'off',
-					'sort' => 'on',
-					'name' => 'description'
 				),
 				'5a577d666decc' => array(
 					'type' => 'column-acf_field',
@@ -57,13 +57,14 @@ function ac_custom_column_settings_9308c7ca() {
 					'edit' => 'on',
 					'name' => '5a577d666ed36'
 				),
-				'posts' => array(
-					'type' => 'posts',
-					'label' => 'Conteggio',
-					'width' => '74',
-					'width_unit' => 'px',
-					'sort' => 'on',
-					'name' => 'posts'
+				'5a6893173a9af' => array(
+					'type' => 'column-acf_field',
+					'label' => 'Show by default',
+					'width' => '',
+					'width_unit' => '%',
+					'field' => 'wp_taxonomy_show_by_default',
+					'edit' => 'on',
+					'name' => '5a6893173a9af'
 				)
 			),
 
