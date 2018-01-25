@@ -209,6 +209,20 @@ array(
           ),
         ),
       ),
+    ),
+    array (
+      'key' => 'wp_map_report_email',
+      'label' => 'Email-to address for alert messages',
+      'name' => 'report_email',
+      'type' => 'email',
+      'instructions' => 'Insert the email recipient for the alert messages send by APP and WEBAPP. Leave it blank for no email alert service'
+    ),
+        array (
+      'key' => 'wp_map_report_sms',
+      'label' => 'MOBILE number for SMS alert messages',
+      'name' => 'report_sms',
+      'type' => 'text',
+      'instructions' => 'Insert the MOBILE recipient for the alert messages send by APP. Leave it blank for no SMS alert service. FORMAT: +XX XXX XXXXXXXXXX'
     )
 
     );
