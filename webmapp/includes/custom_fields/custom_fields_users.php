@@ -21,6 +21,13 @@ $user_fields = array (
       'append' => '',
       'maxlength' => '',
     ),
+    array (
+        'key' => 'wm_user_country',
+        'name' => 'country',
+        'label' => 'Country',
+        'type' => 'text',
+        'instructions' => 'Insert the user country'
+      )
   );
 
 return $user_fields;

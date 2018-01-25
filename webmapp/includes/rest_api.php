@@ -423,13 +423,14 @@ function webmapp_user_registration(WP_REST_Request $request) {
   $app_name = $request->get_param('appname');
 
   $newsletter = $request->get_param('newsletter');
+  $country = $request->get_param('country');
   
   $subject = $app_name . ' - Nuova registrazione';
   
   $message = "Buongiorno, un nuovo utente ha effettuato la registrazione dalla APP Myeasyroute.<br /><br />";
   $message .= " Indirizzo email: ' . $email<br /><br />";
   $message .= " Newsletter: $newsletter<br /><br />";
-
+  $message .= " Country: $country<br /><br />";
 
   $headers = array('Content-Type: text/html; charset=UTF-8');
 
@@ -449,6 +450,7 @@ function webmapp_user_registration(WP_REST_Request $request) {
     if ($newsletter == true) {
       update_user_meta( $user_id, 'newsletter', true);
     }
+      update_user_meta( $user_id, 'country', $country);
 
     // Set the role
     $user = new WP_User($user_id);
