@@ -21,6 +21,8 @@ jQuery(document).ready(function( $ ) {
     marker = L.marker([lat, lng]).addTo(map);
 
     map.touchZoom.disable();
+    map.dragging.disable();
+    map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
     map.boxZoom.disable();
@@ -58,6 +60,8 @@ jQuery(document).ready(function( $ ) {
     var geojsonLayer = L.geoJson(geojson).addTo(map);
     map.fitBounds(geojsonLayer.getBounds());
 
+    map.touchZoom.disable();
+    map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
