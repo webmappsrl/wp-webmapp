@@ -179,11 +179,11 @@ if (function_exists('acf_add_local_field_group')):
 
   acf_add_local_field_group(array(
       'key' => 'group_5853f89462666b4',
-      'title' => 'Import track from gpx/kml',
+      'title' => 'Import track (GPX file)',
       'fields' => array(
           array(
               'key' => 'field_parse_gpx',
-              'label' => 'Import track from GPX/KML file',
+              'label' => 'Import track from GPX file',
               'name' => 'n7webmap_import_gpx',
               'type' => 'message'
           ),

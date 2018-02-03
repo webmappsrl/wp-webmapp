@@ -307,16 +307,18 @@ function webmapp_file_upload() {
   if ($file_mvd) {
     $file_type = explode(".", $fileName);
 
-    if ($file_type[1] == "gpx") {
+    $ftype = end($file_type);
+
+    if ($ftype == "gpx") {
       $response = webmapp_parse_gpx($file, $response);
     }
-    elseif ($file_type[1] == "kml") {
+    elseif ($fype == "kml") {
       $response = webmapp_parse_kml($file, $response);
     }
     else {
-      $response["error"] = "Unknown file type";
+      $response["error"] = "Unknown file type - ".$ftype;
     }
-    $response["file_type"] = $file_type[1];
+    $response["file_type"] = $ftype;
 
   }
 
