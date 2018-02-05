@@ -57,12 +57,12 @@ function wm_api_voucher(WP_REST_Request $request) {
   $v_used_codes = get_field('used_codes',$voucher_id);
 
   $today = date('Y-m-d');
-  $resp['voucher']['id']=$voucher_id;
-  $resp['voucher']['route_id']=$v_route_id;
-  $resp['voucher']['expire_date']=$v_expire_date;
-  $resp['voucher']['total_number']=$v_total_number;
-  $resp['voucher']['used_codes']=$v_used_codes;
-  $resp['today']=$today;
+  //$resp['voucher']['id']=$voucher_id;
+  //$resp['voucher']['route_id']=$v_route_id;
+  //$resp['voucher']['expire_date']=$v_expire_date;
+  //$resp['voucher']['total_number']=$v_total_number;
+  //$resp['voucher']['used_codes']=$v_used_codes;
+  //$resp['today']=$today;
 
 
   //Controlla scadenza voucher -> 401 Voucher expired
