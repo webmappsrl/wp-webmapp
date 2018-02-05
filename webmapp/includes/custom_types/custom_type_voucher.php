@@ -97,7 +97,7 @@ function getWMACFVoucher() {
 			'label' => 'Total Number',
 			'name' => 'total_number',
 			'type' => 'range',
-			'instructions' => 'Enter the total number of VOUCHER codes. The codes will be generated automatically starting from the main code of the voucher you entered in the title. If for example the main code is 18-0040 and the total number you enter in this field is 3, the following 5 codes will automatically be activated: 18-0040-01, 18-0040-02, 18-0040-03',
+			'instructions' => 'Enter the total number of VOUCHER codes. The codes will be generated automatically starting from the main code of the voucher you entered in the title. If for example the main code is 18-0040 and the total number you enter in this field is 3, the following 3 codes will automatically be activated: 18-0040-01, 18-0040-02, 18-0040-03',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -224,7 +224,7 @@ acf_add_local_field_group(array(
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
 	'hide_on_screen' => '',
-	'active' => 1,
+	'active' => 0,
 	'description' => '',
 ));
 
@@ -287,11 +287,11 @@ function ac_wm_voucher() {
 				),
 				'5a76f18cde9ee' => array(
 					'type' => 'column-acf_field',
-					'label' => 'Already used (number)',
+					'label' => 'Already used (codes)',
 					'width' => '',
 					'width_unit' => '%',
-					'field' => 'wm_voucher_used_codes_number',
-					'character_limit' => '20',
+					'field' => 'wm_voucher_used_codes',
+					'character_limit' => '',
 					'edit' => 'off',
 					'sort' => 'off',
 					'filter' => 'off',
