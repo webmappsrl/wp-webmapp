@@ -5,3 +5,8 @@
 .login-action-lostpassword p#nav, p#backtoblog, .login-action-rp p#nav {
   display: none;
 }
+
+#login h1 a {
+  pointer-events: none;
+  cursor: default;
+}

@@ -708,3 +708,8 @@ add_filter( 'lostpassword_redirect', 'my_redirect_home' );
 function my_redirect_home( $lostpassword_redirect ) {
 	return wp_login_url().'?action=lostpassword&webmapp_close=true';
 }
+
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+function custom_loginlogo_url($url) {
+	return '#';
+}
