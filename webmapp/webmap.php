@@ -695,7 +695,7 @@ function login_function() {
 	add_filter( 'gettext', 'username_change', 20, 3 );
 	function username_change( $translated_text, $text, $domain )
 	{
-		if ($translated_text === 'Nome utente o indirizzo email')
+		if ($translated_text === 'Nome utente o indirizzo email' || $text === 'Username')
 		{
 			$translated_text = 'E-Mail';
 		}
