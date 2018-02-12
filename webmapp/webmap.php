@@ -669,3 +669,42 @@ function webmapp_load_icons() {
 
 add_action( 'wp_enqueue_scripts', 'webmapp_load_icons' );
 add_action( 'admin_enqueue_scripts', 'webmapp_load_icons' );
+
+function webmapp_enqueue_style() {
+	wp_enqueue_style( 'login_css', trailingslashit(plugin_dir_url(__FILE__)) .'includes/css/webmapp-login.css', false );
+}
+
+function webmapp_enqueue_script() {
+	wp_enqueue_script( 'login_js', trailingslashit(plugin_dir_url(__FILE__)) .'includes/js/webmapp-login.js', false );
+}
+
+add_action( 'login_enqueue_scripts', 'webmapp_enqueue_style', 10 );
+add_action( 'login_enqueue_scripts', 'webmapp_enqueue_script', 1 );
+
+function webmapp_login_message( $message ) {
+	$action = $_REQUEST['action'];
+	if( $action == 'lostpassword' ) {
+		$message = '<p class="message">Inserisci il tuo indirizzo email, poi controlla nella tua casella postale per il link che ti permette di resettare la password</p>';
+		return $message;
+	}
+	return;
+}
+add_filter( 'login_message', 'webmapp_login_message' );
+
+function login_function() {
+	add_filter( 'gettext', 'username_change', 20, 3 );
+	function username_change( $translated_text, $text, $domain )
+	{
+		if ($translated_text === 'Nome utente o indirizzo email')
+		{
+			$translated_text = 'E-Mail';
+		}
+		return $translated_text;
+	}
+}
+add_action( 'login_head', 'login_function' );
+
+add_filter( 'lostpassword_redirect', 'my_redirect_home' );
+function my_redirect_home( $lostpassword_redirect ) {
+	return wp_login_url().'?action=lostpassword&webmapp_close=true';
+}
