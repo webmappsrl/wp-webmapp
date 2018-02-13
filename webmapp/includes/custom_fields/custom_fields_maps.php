@@ -223,7 +223,15 @@ array(
       'name' => 'report_sms',
       'type' => 'text',
       'instructions' => 'Insert the MOBILE recipient for the alert messages send by APP. Leave it blank for no SMS alert service. FORMAT: +XX XXX XXXXXXXXXX'
-    )
+    ),
+    array (
+      'key' => 'wp_map_activate_zoom_control',
+      'label' => 'Activate Zoom Control',
+      'name' => 'activate_zoom_control',
+      'type' => 'true_false',
+      'instructions' => 'Activate Zoom Control Buttons (+/-) in the MAP interface (webapp an APP)',
+      'default_value' => 0
+    ),
 
     );
     return $map_fields;
