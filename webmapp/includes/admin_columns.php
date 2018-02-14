@@ -6,9 +6,9 @@
  * Time: 16:55
  */
 
-function ac_custom_column_settings_9308c7ca() {
+function getTaxomoyAdminColumnsFields() {
 
-	ac_register_columns( 'wp-taxonomy_webmapp_category', array(
+	 return array(
 		array(
 			'columns' => array(
 				'5a688ed832ac4' => array(
@@ -69,7 +69,14 @@ function ac_custom_column_settings_9308c7ca() {
 			),
 
 		)
-	) );
+	);
+
+}
+
+function ac_custom_column_settings_9308c7ca() {
+    $fields = getTaxomoyAdminColumnsFields();
+	ac_register_columns( 'wp-taxonomy_webmapp_category', $fields) ;
+	ac_register_columns( 'wp-taxonomy_where', $fields) ;
 }
 add_action( 'ac/ready', 'ac_custom_column_settings_9308c7ca' );
 

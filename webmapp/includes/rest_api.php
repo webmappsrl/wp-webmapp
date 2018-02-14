@@ -18,8 +18,9 @@ add_action('rest_api_init', function () {
   registerField("poi", $poi_fields);
 
   // ROUTES
-  $routes_fields = getRouteCustomFields();
+  $routes_fields = getRouteCustomFields(); 
   registerField("route", $routes_fields);
+  registerField("route", getRouteTaxonomyFields());
 
   // TRACKS
   $track_fields = getTrackCustomFields();
@@ -36,6 +37,7 @@ add_action('rest_api_init', function () {
   // WEBMAPP TAXONOMY
   $taxonomy_fields = getWebmappTaxonomyCustomFields();
   registerField("webmapp_category", $taxonomy_fields);
+  registerField("where", $taxonomy_fields);
 
   // PAGE
   $page_fields = getPageCustomFields();
@@ -75,8 +77,9 @@ function registerField($post_type, $fields) {
           }
         }
         $id = $poi_obj->ID;
-        if ($taxonomy == 'webmapp_category') {
-          $id = 'webmapp_category_' . $poi_array['id'];
+        $taxonomies = array('webmapp_category','where');
+        if (in_array($taxonomy, $taxonomies)) {
+          $id = $taxonomy . '_' . $poi_array['id'];
         }
         return get_field($field_name, $id);
       }

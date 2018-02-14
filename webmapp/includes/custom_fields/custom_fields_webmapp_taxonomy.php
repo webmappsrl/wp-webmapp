@@ -16,14 +16,46 @@ function getWebmappTaxonomyCustomFields () {
 			'name' => 'icon',
 			'type' => 'text',
 			'instructions' => 'Insert the icon associated to the taxonomy term. Use the WEBMAPP icons: https://icon.webmapp.it'
-		),array (
-      'key' => 'wp_taxonomy_show_by_default',
-      'label' => 'Show by default',
-      'name' => 'show_by_default',
-      'type' => 'true_false',
-      'instructions' => 'Enable this feature to display items (POIs or TRACKS) on the map by default.',
-      'default_value' => 1
-    ),
+		),
+		array (
+     	 'key' => 'wp_taxonomy_show_by_default',
+     	 'label' => 'Show by default',
+     	 'name' => 'show_by_default',
+     	 'type' => 'true_false',
+     	 'instructions' => 'Enable this feature to display items (POIs or TRACKS) on the map by default.',
+         'default_value' => 1
+        ),
+        array (
+			'key' => 'wm_taxonomy_title',
+			'label' => 'Title',
+			'name' => 'title',
+			'type' => 'text',
+			'instructions' => 'Insert the title used in the WEB term page'
+		),
+		array(
+			'key' => 'wm_taxonomy_featured_image',
+			'label' => 'Featured image',
+			'name' => 'featured_image',
+			'type' => 'image',
+			'instructions' => 'Insert a 16x9 image for WEB site term page',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'preview_size' => 'thumbnail',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => 'png, jpg, jpeg',
+		),
 	);
   return $fields;
 }
@@ -41,6 +73,13 @@ acf_add_local_field_group(array (
 				'param' => 'taxonomy',
 				'operator' => '==',
 				'value' => 'webmapp_category',
+			),
+		),
+		array (
+			array (
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'where',
 			),
 		),
 	),

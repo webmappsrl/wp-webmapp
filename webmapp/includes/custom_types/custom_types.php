@@ -4,6 +4,7 @@
 
 add_action('init', 'codex_cpt_init');
 include_once "custom_type_voucher.php";
+include_once "custom_route_taxonomies.php";
 /**
  * Register a POI, TRACK, ROUTE, MAP, WEBMAPP CATEGORIES
  */
