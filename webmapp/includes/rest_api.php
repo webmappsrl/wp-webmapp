@@ -38,6 +38,10 @@ add_action('rest_api_init', function () {
   $taxonomy_fields = getWebmappTaxonomyCustomFields();
   registerField("webmapp_category", $taxonomy_fields);
   registerField("where", $taxonomy_fields);
+  registerField("when", $taxonomy_fields);
+  registerField("who", $taxonomy_fields);
+  registerField("theme", $taxonomy_fields);
+  registerField("activity", $taxonomy_fields);
 
   // PAGE
   $page_fields = getPageCustomFields();
@@ -77,7 +81,7 @@ function registerField($post_type, $fields) {
           }
         }
         $id = $poi_obj->ID;
-        $taxonomies = array('webmapp_category','where');
+        $taxonomies = array('webmapp_category','activity','theme','where','when','who');
         if (in_array($taxonomy, $taxonomies)) {
           $id = $taxonomy . '_' . $poi_array['id'];
         }

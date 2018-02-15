@@ -82,6 +82,34 @@ acf_add_local_field_group(array (
 				'value' => 'where',
 			),
 		),
+		array (
+			array (
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'when',
+			),
+		),
+		array (
+			array (
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'who',
+			),
+		),
+		array (
+			array (
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'theme',
+			),
+		),
+		array (
+			array (
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'activity',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'normal',

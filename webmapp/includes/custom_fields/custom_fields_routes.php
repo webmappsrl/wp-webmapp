@@ -106,12 +106,21 @@ function getRouteCustomFields() {
 
 function getRouteTaxonomyFields() {
  return array(
-    array(
-      'key' => 'wm_taxonomy_where',
-      'label' => 'Places to go',
-      'name' => 'where',
+    getRouteTaxonomyField('activity','Activities','Choose one (or more) activity or this route.'),
+    getRouteTaxonomyField('theme','Themes','Choome one (or more) theme for this route'),
+    getRouteTaxonomyField('where','Places to go','Choose one (or more) place for this route.'),
+    getRouteTaxonomyField('when','Seasons','Choose one (or more) season for this route.'),
+    getRouteTaxonomyField('who','Targets','Choose one (or more) target for this route.'),
+  );
+}
+
+function getRouteTaxonomyField($name,$label,$instructions) {
+    return array(
+      'key' => 'wm_taxonomy_'.$name,
+      'label' => $label,
+      'name' => $name,
       'type' => 'taxonomy',
-      'instructions' => 'Insert place',
+      'instructions' => $instructions,
       'required' => 0,
       'conditional_logic' => 0,
       'wrapper' => array(
@@ -119,7 +128,7 @@ function getRouteTaxonomyFields() {
         'class' => '',
         'id' => '',
       ),
-      'taxonomy' => 'where',
+      'taxonomy' => $name,
       'field_type' => 'checkbox',
       'allow_null' => 0,
       'add_term' => 0,
@@ -127,8 +136,7 @@ function getRouteTaxonomyFields() {
       'load_terms' => 0,
       'return_format' => 'id',
       'multiple' => 0,
-    ),
-  );
+    );
 }
 
 

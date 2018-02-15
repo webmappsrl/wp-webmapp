@@ -76,7 +76,11 @@ function getTaxomoyAdminColumnsFields() {
 function ac_custom_column_settings_9308c7ca() {
     $fields = getTaxomoyAdminColumnsFields();
 	ac_register_columns( 'wp-taxonomy_webmapp_category', $fields) ;
+	ac_register_columns( 'wp-taxonomy_activity', $fields) ;
+	ac_register_columns( 'wp-taxonomy_theme', $fields) ;
 	ac_register_columns( 'wp-taxonomy_where', $fields) ;
+	ac_register_columns( 'wp-taxonomy_when', $fields) ;
+	ac_register_columns( 'wp-taxonomy_who', $fields) ;
 }
 add_action( 'ac/ready', 'ac_custom_column_settings_9308c7ca' );
 
