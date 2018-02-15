@@ -232,6 +232,22 @@ array(
       'instructions' => 'Activate Zoom Control Buttons (+/-) in the MAP interface (webapp an APP)',
       'default_value' => 0
     ),
+    array (
+      'key' => 'wp_map_hide_webmapp_page',
+      'label' => 'Remove Webmapp page from main menu',
+      'name' => 'hide_webmapp_page',
+      'type' => 'true_false',
+      'instructions' => 'Check this option if you want to remove Webmapp page from app and webapp Main Menu',
+      'default_value' => 0
+    ),
+    array (
+      'key' => 'wp_map_hide_attribution_page',
+      'label' => 'Remove Attribution page from main menu',
+      'name' => 'hide_attribution_page',
+      'type' => 'true_false',
+      'instructions' => 'Check this option if you want to remove Attrbution page from app and webapp Main Menu',
+      'default_value' => 0
+    ),
 
     );
     return $map_fields;
