@@ -159,34 +159,34 @@ if (function_exists('acf_add_local_field_group')):
     'active' => 1
   ));
 
-acf_add_local_field_group(array(
-  'key' => 'group_wm_route_taxonomy',
-  'title' => 'Classifications',
-  'fields' => getRouteTaxonomyFields(),
-  'location' => array(
-    array(
-      array(
-        'param' => 'post_type',
-        'operator' => '==',
-        'value' => 'track',
-      ),
-    ),
-    array(
-      array(
-        'param' => 'post_type',
-        'operator' => '==',
-        'value' => 'route',
-      ),
-    ),
-  ),
-  'menu_order' => 1,
-  'position' => 'normal',
-  'style' => 'default',
-  'label_placement' => 'top',
-  'instruction_placement' => 'label',
-  'active' => 1,
-  'description' => '',
-));
+// acf_add_local_field_group(array(
+//   'key' => 'group_wm_route_taxonomy',
+//   'title' => 'Classifications',
+//   'fields' => getRouteTaxonomyFields(),
+//   'location' => array(
+//     array(
+//       array(
+//         'param' => 'post_type',
+//         'operator' => '==',
+//         'value' => 'track',
+//       ),
+//     ),
+//     array(
+//       array(
+//         'param' => 'post_type',
+//         'operator' => '==',
+//         'value' => 'route',
+//       ),
+//     ),
+//   ),
+//   'menu_order' => 1,
+//   'position' => 'normal',
+//   'style' => 'default',
+//   'label_placement' => 'top',
+//   'instruction_placement' => 'label',
+//   'active' => 1,
+//   'description' => '',
+// ));
 
 endif;
 

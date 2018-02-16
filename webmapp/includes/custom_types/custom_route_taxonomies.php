@@ -49,7 +49,6 @@ function WmRegisterTaxonomy($name,$label_singular,$label_plural) {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
-		'meta_box_cb'				 => false,
 		'rewrite'                    => $rewrite,
 		'show_in_rest'               => true,
 	);
