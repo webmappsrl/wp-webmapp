@@ -25,6 +25,14 @@ function getWebmappTaxonomyCustomFields () {
      	 'instructions' => 'Enable this feature to display items (POIs or TRACKS) on the map by default.',
          'default_value' => 1
         ),
+		array (
+     	 'key' => 'wp_taxonomy_alert',
+     	 'label' => 'Enable Alert Feature',
+     	 'name' => 'alert',
+     	 'type' => 'true_false',
+     	 'instructions' => 'Check this if you want to enable the alert feature on the POI in this term. This feature works only for MyEasyRoute with the navigation option in the single stage of a route.',
+         'default_value' => 0
+        ),
         array (
 			'key' => 'wm_taxonomy_title',
 			'label' => 'Title',
