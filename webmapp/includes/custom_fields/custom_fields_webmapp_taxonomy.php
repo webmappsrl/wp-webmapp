@@ -33,6 +33,14 @@ function getWebmappTaxonomyCustomFields () {
      	 'instructions' => 'Check this if you want to enable the alert feature on the POI in this term. This feature works only for MyEasyRoute with the navigation option in the single stage of a route.',
          'default_value' => 0
         ),
+		array (
+     	 'key' => 'wp_taxonomy_exclude',
+     	 'label' => 'Exclude this category from general MAP',
+     	 'name' => 'exclude',
+     	 'type' => 'true_false',
+     	 'instructions' => 'Check this if you want to exclude the features of this term from the general MAP.',
+         'default_value' => 0
+        ),
         array (
 			'key' => 'wm_taxonomy_title',
 			'label' => 'Title',
