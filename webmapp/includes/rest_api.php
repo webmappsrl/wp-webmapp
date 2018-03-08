@@ -33,6 +33,7 @@ add_action('rest_api_init', function () {
   registerField("map", $map_fields);
   $map_fields = getMapGeoInfoCustomFields();
   registerField("map", $map_fields);
+  registerField("map", getMapAdvancedOptionsFields());
 
   // WEBMAPP TAXONOMY
   $taxonomy_fields = getWebmappTaxonomyCustomFields();

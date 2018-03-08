@@ -259,13 +259,27 @@ array(
             'key' => 'field_map_bbox',
             'label' => 'bounding box',
             'name' => 'n7webmap_map_bbox',
-            'type' => 'textarea'
+            'type' => 'textarea',
+            'instructions' => 'Use this field to manually insert overlay layers. To be used carefully.',
+
         ),
-                array(           
+         array(           
             'key' => 'wm_map_config_url',
             'label' => 'Config URL',
             'name' => 'config_url',
             'type' => 'text'
+        )
+    );
+    return $map_fields;
+  }
+
+  function getMapAdvancedOptionsFields() {
+    $map_fields = array(
+        array(           
+            'key' => 'wm_map_additional_overlay_layers',
+            'label' => 'Additional Overlay Layers',
+            'name' => 'additional_overlay_layers',
+            'type' => 'textarea',
         )
     );
     return $map_fields;
@@ -338,6 +352,26 @@ acf_add_local_field_group(array(
       'label_placement' => 'top',
       'instruction_placement' => 'label',
       'menu_order' => 2
+  ));
+  
+  acf_add_local_field_group(array(
+      'key' => 'group_wm_map_advanced_options',
+      'title' => __("Advanced Options"),
+      'fields' => getMapAdvancedOptionsFields(),
+      'location' => array(
+          array(
+              array(
+                  'param' => 'post_type',
+                  'operator' => '==',
+                  'value' => 'map',
+              ),
+          ),
+      ),
+      'position' => 'normal',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'menu_order' => 3
   ));
 
 endif;
