@@ -104,43 +104,8 @@ function getRouteCustomFields() {
   return $route_fields;
 }
 
-function getRouteTaxonomyFields() {
- return array(
-    getRouteTaxonomyField('activity','Activities','Choose one (or more) activity or this route.'),
-    getRouteTaxonomyField('theme','Themes','Choome one (or more) theme for this route'),
-    getRouteTaxonomyField('where','Places to go','Choose one (or more) place for this route.'),
-    getRouteTaxonomyField('when','Seasons','Choose one (or more) season for this route.'),
-    getRouteTaxonomyField('who','Targets','Choose one (or more) target for this route.'),
-  );
-}
-
-function getRouteTaxonomyField($name,$label,$instructions) {
-    return array(
-      'key' => 'wm_taxonomy_'.$name,
-      'label' => $label,
-      'name' => $name,
-      'type' => 'taxonomy',
-      'instructions' => $instructions,
-      'required' => 0,
-      'conditional_logic' => 0,
-      'wrapper' => array(
-        'width' => '',
-        'class' => '',
-        'id' => '',
-      ),
-      'taxonomy' => $name,
-      'field_type' => 'checkbox',
-      'allow_null' => 0,
-      'add_term' => 0,
-      'save_terms' => 0,
-      'load_terms' => 0,
-      'return_format' => 'id',
-      'multiple' => 0,
-    );
-}
-
-
 if (function_exists('acf_add_local_field_group')):
+
 
   acf_add_local_field_group(array(
     'key' => 'group_58528c8aa5b2ff',
@@ -158,35 +123,6 @@ if (function_exists('acf_add_local_field_group')):
     'menu_order' => 0,
     'active' => 1
   ));
-
-// acf_add_local_field_group(array(
-//   'key' => 'group_wm_route_taxonomy',
-//   'title' => 'Classifications',
-//   'fields' => getRouteTaxonomyFields(),
-//   'location' => array(
-//     array(
-//       array(
-//         'param' => 'post_type',
-//         'operator' => '==',
-//         'value' => 'track',
-//       ),
-//     ),
-//     array(
-//       array(
-//         'param' => 'post_type',
-//         'operator' => '==',
-//         'value' => 'route',
-//       ),
-//     ),
-//   ),
-//   'menu_order' => 1,
-//   'position' => 'normal',
-//   'style' => 'default',
-//   'label_placement' => 'top',
-//   'instruction_placement' => 'label',
-//   'active' => 1,
-//   'description' => '',
-// ));
 
 endif;
 
