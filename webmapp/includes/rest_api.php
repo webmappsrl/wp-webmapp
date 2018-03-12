@@ -83,7 +83,6 @@ function registerField($post_type, $fields) {
         $taxonomies = array('webmapp_category','activity','theme','where','when','who');
         if (in_array($taxonomy, $taxonomies)) {
           $id = $taxonomy . '_' . $poi_array['id'];
-          echo "TAX $id";
         }
         return get_field($field_name, $id);
       }
