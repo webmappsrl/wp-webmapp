@@ -19,7 +19,7 @@ jQuery(document).ready(function( $ ) {
     }).addTo(map);
 
     marker = L.marker([lat, lng]).addTo(map);
-
+    marker.on('click', onClick);
     map.touchZoom.disable();
     map.dragging.disable();
     map.touchZoom.disable();
@@ -31,9 +31,11 @@ jQuery(document).ready(function( $ ) {
     var html = '<a target="_blank" class="open-poi-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
     $custom_poi_map.prepend(html);
     
-    $('.open-poi-map').on('click', function () {
+    $('.open-poi-map').on('click', onClick());
+
+    function onClick(){
       window.open( data.appUrl + '/#/?map='+ data.zoom + '/' + lat + '/' + lng , '_blank');
-    })
+    }
   }
 
 
