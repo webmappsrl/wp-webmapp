@@ -19,7 +19,9 @@ jQuery(document).ready(function( $ ) {
     }).addTo(map);
 
     marker = L.marker([lat, lng]).addTo(map);
-    marker.on('click', onClick);
+    marker.on('click', function(){
+      window.open( data.appUrl + '/#/?map='+ data.zoom + '/' + lat + '/' + lng , '_blank');
+    });
     map.touchZoom.disable();
     map.dragging.disable();
     map.touchZoom.disable();
@@ -30,12 +32,13 @@ jQuery(document).ready(function( $ ) {
     $(".leaflet-control-zoom").css("visibility", "hidden");
     var html = '<a target="_blank" class="open-poi-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
     $custom_poi_map.prepend(html);
-    
-    $('.open-poi-map').on('click', onClick());
 
-    function onClick(){
+    $('.open-poi-map').on('click', function(e){
+      e.preventDefault();
       window.open( data.appUrl + '/#/?map='+ data.zoom + '/' + lat + '/' + lng , '_blank');
-    }
+    });
+
+
   }
 
 
