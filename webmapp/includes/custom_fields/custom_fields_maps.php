@@ -171,6 +171,14 @@ array(
       'library' => 'all',
     ),
           array (
+      'key' => 'wp_map_default_language',
+      'label' => 'Default language',
+      'name' => 'default_language',
+      'type' => 'text',
+      'instructions' => 'Set default (actual) language, even if the platform (app, webapp, website) is monolingual.',
+      'default_value' => 'it'
+    ),
+          array (
       'key' => 'wp_map_has_languages',
       'label' => 'Multilanguages',
       'name' => 'has_languages',
