@@ -26,6 +26,7 @@ function register_webmap_settings() {
   register_setting('net7-webmap-group', 'webmapp_map_zoom');
   register_setting('net7-webmap-group', 'webmapp_map_tilesUrl');
   register_setting('net7-webmap-group', 'webmapp_map_appUrl');
+  register_setting('net7-webmap-group', 'webmapp_map_modal');
 }
 
 function webmap_options() {
@@ -55,16 +56,24 @@ function webmap_options() {
       </tr>
 
         <tr valign="top">
-            <th scope="row"><?php _e( "Zoom mappa POI", 'webmap_net7' ) ?></th>
+            <th scope="row"><?php _e( "Zoom mappa", 'webmap_net7' ) ?></th>
             <td><input type="text" size="50" name="webmapp_map_zoom" value="<?php echo esc_attr( get_option( 'webmapp_map_zoom' ) ); ?>"/></td>
         </tr>
         <tr valign="top">
-            <th scope="row"><?php _e( "TilesUrl mappa POI", 'webmap_net7' ) ?></th>
+            <th scope="row"><?php _e( "TilesUrl mappa", 'webmap_net7' ) ?></th>
             <td><input type="text" size="50" name="webmapp_map_tilesUrl" value="<?php echo esc_attr( get_option( 'webmapp_map_tilesUrl' ) ); ?>"/></td>
         </tr>
         <tr valign="top">
-            <th scope="row"><?php _e( "App url mappa POI", 'webmap_net7' ) ?></th>
+            <th scope="row"><?php _e( "App url mappa", 'webmap_net7' ) ?></th>
             <td><input type="text" size="50" name="webmapp_map_appUrl" value="<?php echo esc_attr( get_option( 'webmapp_map_appUrl' ) ); ?>"/></td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><?php _e( "Apri in modale", 'webmap_net7' ) ?></th>
+            <td><select name="webmapp_map_modal">
+                    <option value="true" <?php if( get_option( 'webmapp_map_modal' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_modal' ) == 'false' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
         </tr>
 
     </table>
