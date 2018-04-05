@@ -4,8 +4,11 @@ jQuery(document).ready(function ($) {
 
   if ($custom_poi_map.length) {
 
-    var lat = $custom_poi_map.data('lat')
-    var lng = $custom_poi_map.data('lng')
+    var lat = $custom_poi_map.data('lat'),
+      lng = $custom_poi_map.data('lng'),
+
+      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng + '" width="100%" height="500px"></iframe></div></div>';
+
     map = L.map('custom-poi-map').setView([lat, lng], data.zoom)
 
     L.tileLayer(data.tilesUrl, {
@@ -25,7 +28,11 @@ jQuery(document).ready(function ($) {
         window.open(data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' +
           lng,
           '_blank')
-      })
+      });
+    } else {
+      marker.on('click', function () {
+        $('body').prepend(modal);
+      });
     }
 
     map.touchZoom.disable()
@@ -51,7 +58,6 @@ jQuery(document).ready(function ($) {
 
     $('.open-modal-map').on('click', function (e) {
       e.preventDefault();
-      var modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng + '" width="100%" height="500px"></iframe></div></div>';
       $('body').prepend(modal);
     });
 
@@ -66,7 +72,7 @@ jQuery(document).ready(function ($) {
 
   if ($custom_track_map.length) {
 
-    var geojson = $custom_track_map.data('geojson')
+    var geojson = $custom_track_map.data('geojson');
 
     map = L.map('custom-track-map').setView([0, 0], data.zoom)
 
@@ -98,13 +104,31 @@ jQuery(document).ready(function ($) {
     center = map.getCenter()
     zoom = map.getZoom()
 
-    var html = '<a target="_blank" class="open-track-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>'
-    $custom_track_map.prepend(html)
+    if ( data.modal_mode === 'false' ) {
+      attr = 'open-track-map';
+    } else {
+      attr = 'open-modal-map';
+    }
+    var html = '<a target="_blank" class="' + attr + '" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>',
+    modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' + center.lng + '" width="100%" height="500px"></iframe></div></div>';
+
+    $custom_track_map.prepend(html);
 
     $('.open-track-map').on('click', function () {
       window.open(data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' +
         center.lng, '_blank')
-    })
+    });
+    
+    $('.open-modal-map').on('click', function (e) {
+      e.preventDefault();
+      $('body').prepend(modal);
+    });
+
+    $('body').on('click', '.close-modal', function (e) {
+      e.preventDefault();
+      console.log('cià');
+      $('#modal-map').remove();
+    });
   }
 
 })
