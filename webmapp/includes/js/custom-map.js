@@ -68,13 +68,33 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  $custom_track_map = $('#custom-track-map')
+  $custom_track_map = $('#custom-track-map');
 
   if ($custom_track_map.length) {
+
+
 
     var geojson = $custom_track_map.data('geojson');
 
     map = L.map('custom-track-map').setView([0, 0], data.zoom)
+
+    $related_pois = $('.related_poi');
+
+    if ($related_pois.length){
+
+      $related_pois.each(function( index, element ) {
+        console.log(element);
+        var lat = $(element).data('lat'),
+          lng = $(element).data('lng');
+        marker = L.marker([lat, lng]).addTo(map);
+      });
+
+      /*
+      var lat = $related_poi.data('lat'),
+        lng = $related_poi.data('lng');
+
+      marker = L.marker([lat, lng]).addTo(map); */
+    }
 
     L.tileLayer(data.tilesUrl, {
       layers: [
@@ -118,7 +138,7 @@ jQuery(document).ready(function ($) {
       window.open(data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' +
         center.lng, '_blank')
     });
-    
+
     $('.open-modal-map').on('click', function (e) {
       e.preventDefault();
       $('body').prepend(modal);
