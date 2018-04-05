@@ -83,17 +83,25 @@ jQuery(document).ready(function ($) {
     if ($related_pois.length){
 
       $related_pois.each(function( index, element ) {
+
         console.log(element);
         var lat = $(element).data('lat'),
-          lng = $(element).data('lng');
+          lng = $(element).data('lng'),
+          title = $(element).data('title');
+
         marker = L.marker([lat, lng]).addTo(map);
+        marker.bindPopup(title);
+        marker.on('click', onClick);
+
       });
 
-      /*
-      var lat = $related_poi.data('lat'),
-        lng = $related_poi.data('lng');
+      function onClick(e) {
+        var popup = e.target.getPopup();
+        var content = popup.getContent();
 
-      marker = L.marker([lat, lng]).addTo(map); */
+        console.log(content);
+      }
+
     }
 
     L.tileLayer(data.tilesUrl, {
