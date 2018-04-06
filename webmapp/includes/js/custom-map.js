@@ -90,17 +90,20 @@ jQuery(document).ready(function ($) {
           title = $(element).data('title');
 
         marker = L.marker([lat, lng]).addTo(map);
+        /*
         marker.bindPopup(title);
         marker.on('click', onClick);
-
+        */
       });
 
+      /*
       function onClick(e) {
         var popup = e.target.getPopup();
         var content = popup.getContent();
 
         console.log(content);
       }
+      */
 
     }
 
