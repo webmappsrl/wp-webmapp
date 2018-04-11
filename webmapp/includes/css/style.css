@@ -156,10 +156,10 @@ ul.webmap_cat_checklist ul{
 
 .modal-content {
   background-color: #fefefe;
-  margin: 7% auto;
+  margin: 5% auto;
   padding: 10px 20px 20px;;
   border: 1px solid #888;
-  width: 80%;
+  width: 90%;
 }
 
 #modal-map .fa.close-modal {

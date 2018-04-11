@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
     var lat = $custom_poi_map.data('lat'),
       lng = $custom_poi_map.data('lng'),
 
-      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng + '" width="100%" height="500px"></iframe></div></div>';
+      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng + '" width="100%"></iframe></div></div>';
 
     map = L.map('custom-poi-map').setView([lat, lng], data.zoom)
 
@@ -32,6 +32,7 @@ jQuery(document).ready(function ($) {
     } else {
       marker.on('click', function () {
         $('body').prepend(modal);
+        $('#modal-map iframe').height($(window).height() * 80 / 100 );
       });
     }
 
@@ -63,9 +64,10 @@ jQuery(document).ready(function ($) {
 
     $('body').on('click', '.close-modal', function (e) {
       e.preventDefault();
-      console.log('cià');
+
       $('#modal-map').remove();
     });
+
   }
 
   $custom_track_map = $('#custom-track-map');
@@ -90,20 +92,9 @@ jQuery(document).ready(function ($) {
           title = $(element).data('title');
 
         marker = L.marker([lat, lng]).addTo(map);
-        /*
-        marker.bindPopup(title);
-        marker.on('click', onClick);
-        */
+
       });
 
-      /*
-      function onClick(e) {
-        var popup = e.target.getPopup();
-        var content = popup.getContent();
-
-        console.log(content);
-      }
-      */
 
     }
 
@@ -157,9 +148,8 @@ jQuery(document).ready(function ($) {
 
     $('body').on('click', '.close-modal', function (e) {
       e.preventDefault();
-      console.log('cià');
       $('#modal-map').remove();
     });
   }
 
-})
+});
