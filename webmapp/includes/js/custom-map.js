@@ -6,8 +6,9 @@ jQuery(document).ready(function ($) {
 
     var lat = $custom_poi_map.data('lat'),
       lng = $custom_poi_map.data('lng'),
+      id = $custom_poi_map.data('id'),
 
-      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng + '" width="100%"></iframe></div></div>';
+      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/poi/' + id + '/' + data.zoom + '" width="100%"></iframe></div></div>';
 
     map = L.map('custom-poi-map').setView([lat, lng], data.zoom)
 
@@ -25,8 +26,7 @@ jQuery(document).ready(function ($) {
 
     if ( data.modal_mode === 'false' ) {
       marker.on('click', function () {
-        window.open(data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' +
-          lng,
+        window.open(data.appUrl + '/#/poi/' + id + '/' + data.zoom,
           '_blank')
       });
     } else {
@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
 
     $('.open-poi-map').on('click', function (e) {
       e.preventDefault()
-      window.open(data.appUrl + '/#/?map=' + data.zoom + '/' + lat + '/' + lng, '_blank')
+      window.open(data.appUrl + '/#/poi/' + id + '/' + data.zoom, '_blank')
     });
 
     $('.open-modal-map').on('click', function (e) {
