@@ -498,6 +498,8 @@ function webmapp_send_mail_request(WP_REST_Request $request) {
 
   // Email the user
   if ($route_id && $email && $title) {
+
+    // ADMIN EMAIL
     $subject = $app_name . ' - Nuova richiesta download itinerario';
     $user = get_user_by('email', $email);
     $token = $token = bin2hex(random_bytes(10));
@@ -509,6 +511,55 @@ function webmapp_send_mail_request(WP_REST_Request $request) {
     $transient = 'request_route_' . $route_id . '_user_' . $user->ID;
     set_transient($transient, $token, WEEK_IN_SECONDS);
     wp_mail($to, $subject, $message, $headers);
+
+    // USER EMAIL
+    $subject = 'Myeasyroute request';
+    $message = <<<EOF
+Gentile utente Myeasyroute,<br />
+ti ringraziamo per aver scaricato e utilizzato la nostra App.<br />
+<br />
+Myeasyroute è una nuova app e stiamo costantemente lavorando per implementare e migliorare tutte le sezioni.<br />
+La funzione "Acquista" è ancora in versione beta, e sarà operativa in modo automatico a breve.<br />
+Nel frattempo, se vuoi procedere all'acquisto dell'itinerario da te scelto, ti invitiamo a rispondere a questa email indicandoci i tuoi dati personali:<br />
+<br />
+Nome e cognome<br />
+Nome del tour che si desidera scaricare<br />
+Indirizzo di fatturazione<br />
+Ti risponderemo a breve inviandoti un link per effettuare il pagamento sicuro con carta di credito su piattaforma E-commerce, 
+e a seguire ti invieremo il codice per scaricare l'itinerario.<br />
+<br />
+A disposizione per qualunque chiarimento, ti ringraziamo.<br />
+<br />
+Il team di Myeasyroute<br />
+<br />
+=======================================================<br />
+<br />
+Dear Myeasyroute user,<br />
+thank you for downloading and using our App.<br />
+<br />
+Myeasyroute is a new app and we are constantly working to implement and improve all the sections.<br />
+The "Buy" feature is still in beta, and will be operational soon.<br />
+In the meantime, if you want to proceed with the purchase of the itinerary you choose, we invite you to reply to 
+this email indicating your personal data:<br />
+<br />
+Name and surname<br />
+Name of the required tour<br />
+Billing address<br />
+We will reply shortly by sending you a link to make secure payment by credit card on the E-commerce platform, 
+and then we will send you the code to download the itinerary.<br />
+<br />
+We remain at your disposal for any further information.<br />
+<br />
+The Myeasyroute team<br />
+EOF;
+
+    $headers = array(
+      'Content-Type: text/html; charset=UTF-8',
+      "From: Myeasyroute Team <$to>",
+      "Reply-To: Myeasyroute Team <$to>",
+      );
+    wp_mail($email, $subject, $message, $headers);
+
     return new WP_REST_Response($request, 200);
   }
   else {
