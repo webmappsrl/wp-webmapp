@@ -60,6 +60,7 @@ jQuery(document).ready(function ($) {
     $('.open-modal-map').on('click', function (e) {
       e.preventDefault();
       $('body').prepend(modal);
+      $('#modal-map iframe').height($(window).height() * 80 / 100 );
     });
 
     $('body').on('click', '.close-modal', function (e) {
@@ -137,13 +138,14 @@ jQuery(document).ready(function ($) {
     $custom_track_map.prepend(html);
 
     $('.open-track-map').on('click', function () {
-      window.open(data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' +
-        center.lng, '_blank')
+      window.open(data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' + center.lng, '_blank');
+      $('#modal-map iframe').height($(window).height() * 80 / 100 );
     });
 
     $('.open-modal-map').on('click', function (e) {
       e.preventDefault();
       $('body').prepend(modal);
+      $('#modal-map iframe').height($(window).height() * 80 / 100 );
     });
 
     $('body').on('click', '.close-modal', function (e) {
