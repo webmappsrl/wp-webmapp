@@ -13,6 +13,9 @@ function webmap_custom_map_scripts() {
 	$zoom = get_option( 'webmapp_map_zoom' );
 	$app_url = get_option( 'webmapp_map_appUrl' );
 	$modal = get_option( 'webmapp_map_modal' );
+	$pin = !empty( get_option( 'webmapp_map_show-pin' ) ) ? get_option( 'webmapp_map_show-pin' ) : 'true';
+	$expand = !empty( get_option( 'webmapp_map_show-expand' ) ) ? get_option( 'webmapp_map_show-expand' ) : 'true';
+	$click = !empty( get_option( 'webmapp_map_click-iframe' ) ) ? get_option( 'webmapp_map_click-iframe' ) : 'true';
 
 	if (empty($tiles_url)){
 		$tiles_url = 'https://api.webmapp.it/trentino/tiles/map/{z}/{x}/{y}.png';
@@ -30,6 +33,9 @@ function webmap_custom_map_scripts() {
 		'zoom' => $zoom,
 		'appUrl' => $app_url,
 		'modal_mode' => $modal,
+		'show_pin' => $pin,
+		'show_expand' => $expand,
+		'click_iframe' => $click,
 	);
 
 	wp_localize_script( 'custom-map', 'data', $data );

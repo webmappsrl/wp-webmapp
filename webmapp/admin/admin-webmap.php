@@ -27,6 +27,9 @@ function register_webmap_settings() {
   register_setting('net7-webmap-group', 'webmapp_map_tilesUrl');
   register_setting('net7-webmap-group', 'webmapp_map_appUrl');
   register_setting('net7-webmap-group', 'webmapp_map_modal');
+  register_setting('net7-webmap-group', 'webmapp_map_show-pin');
+  register_setting('net7-webmap-group', 'webmapp_map_show-expand');
+  register_setting('net7-webmap-group', 'webmapp_map_click-iframe');
 }
 
 function webmap_options() {
@@ -76,6 +79,32 @@ function webmap_options() {
             </td>
         </tr>
 
+        <tr valign="top">
+            <th scope="row"><?php _e( "Mostra Pin", 'webmap_net7' ) ?></th>
+            <td><select name="webmapp_map_modal">
+                    <option value="true" <?php if( get_option( 'webmapp_map_show-pin' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_show-pin' ) == 'false' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><?php _e( "Mostra Espandi", 'webmap_net7' ) ?></th>
+            <td><select name="webmapp_map_modal">
+                    <option value="true" <?php if( get_option( 'webmapp_map_show-expand' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_show-expand' ) == 'false' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><?php _e( "Click su Iframe", 'webmap_net7' ) ?></th>
+            <td><select name="webmapp_map_modal">
+                    <option value="true" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'false' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
     </table>
   <?php submit_button(); ?>
   </form>
