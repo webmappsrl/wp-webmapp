@@ -39,12 +39,7 @@ jQuery(document).ready(function ($) {
 
     if ( data.show_expand === 'true' ) {
 
-      if (data.modal_mode === 'false') {
-        attr = 'open-poi-map';
-      }
-      else {
-        attr = 'open-modal-map';
-      }
+      attr = 'open-modal-map';
 
       html = '<a target="_blank" class="' + attr + '" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
       $custom_poi_map.prepend(html)
@@ -145,12 +140,9 @@ jQuery(document).ready(function ($) {
     var modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' + center.lng + '" width="100%"></iframe></div></div>';
 
     if ( data.show_expand === 'true' ) {
-      if (data.modal_mode === 'false') {
-        attr = 'open-track-map';
-      }
-      else {
-        attr = 'open-modal-map';
-      }
+
+      attr = 'open-modal-map';
+
       var html = '<a target="_blank" class="' + attr + '" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
 
       $custom_track_map.prepend(html);

@@ -70,14 +70,6 @@ function webmap_options() {
             <th scope="row"><?php _e( "App url mappa", 'webmap_net7' ) ?></th>
             <td><input type="text" size="50" name="webmapp_map_appUrl" value="<?php echo esc_attr( get_option( 'webmapp_map_appUrl' ) ); ?>"/></td>
         </tr>
-        <tr valign="top">
-            <th scope="row"><?php _e( "Apri in modale", 'webmap_net7' ) ?></th>
-            <td><select name="webmapp_map_modal">
-                    <option value="true" <?php if( get_option( 'webmapp_map_modal' ) == 'true' ) echo 'selected'; ?>>Sì</option>
-                    <option value="false" <?php if( get_option( 'webmapp_map_modal' ) == 'false' ) echo 'selected'; ?>>No</option>
-                </select>
-            </td>
-        </tr>
 
         <tr valign="top">
             <th scope="row"><?php _e( "Mostra Pin", 'webmap_net7' ) ?></th>

@@ -12,7 +12,6 @@ function webmap_custom_map_scripts() {
 	$tiles_url = get_option('webmapp_map_tilesUrl');
 	$zoom = get_option( 'webmapp_map_zoom' );
 	$app_url = get_option( 'webmapp_map_appUrl' );
-	$modal = get_option( 'webmapp_map_modal' );
 	$pin = !empty( get_option( 'webmapp_map_show-pin' ) ) ? get_option( 'webmapp_map_show-pin' ) : 'true';
 	$expand = get_option( 'webmapp_map_show-expand' );
 	$click = !empty( get_option( 'webmapp_map_click-iframe' ) ) ? get_option( 'webmapp_map_click-iframe' ) : 'true';
@@ -32,7 +31,6 @@ function webmap_custom_map_scripts() {
 		'tilesUrl' => $tiles_url,
 		'zoom' => $zoom,
 		'appUrl' => $app_url,
-		'modal_mode' => $modal,
 		'show_pin' => $pin,
 		'show_expand' => $expand,
 		'click_iframe' => $click,
