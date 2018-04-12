@@ -86,32 +86,6 @@ jQuery(document).ready(function ($) {
     map.keyboard.disable()
     $('.leaflet-control-zoom').css('visibility', 'hidden')
 
-    if ( data.modal_mode === 'false' ) {
-      attr = 'open-poi-map';
-    } else {
-      attr = 'open-modal-map';
-    }
-    html = '<a target="_blank" class="' + attr + '" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
-    $custom_poi_map.prepend(html)
-
-    $('.open-poi-map').on('click', function (e) {
-      e.preventDefault()
-      window.open(data.appUrl + '/#/poi/' + id + '/' + data.zoom, '_blank')
-    });
-
-    $('.open-modal-map').on('click', function (e) {
-      e.preventDefault();
-      $('body').prepend(modal);
-      $('#modal-map iframe').height($(window).height() * 80 / 100 );
-    });
-
-    $('body').on('click', '.close-modal', function (e) {
-      e.preventDefault();
-
-      $('#modal-map').remove();
-    });
-
-
   }
 
   $custom_track_map = $('#custom-track-map');

@@ -14,7 +14,7 @@ function webmap_custom_map_scripts() {
 	$app_url = get_option( 'webmapp_map_appUrl' );
 	$modal = get_option( 'webmapp_map_modal' );
 	$pin = !empty( get_option( 'webmapp_map_show-pin' ) ) ? get_option( 'webmapp_map_show-pin' ) : 'true';
-	$expand = !empty( get_option( 'webmapp_map_show-expand' ) ) ? get_option( 'webmapp_map_show-expand' ) : 'true';
+	$expand = get_option( 'webmapp_map_show-expand' );
 	$click = !empty( get_option( 'webmapp_map_click-iframe' ) ) ? get_option( 'webmapp_map_click-iframe' ) : 'true';
 
 	if (empty($tiles_url)){

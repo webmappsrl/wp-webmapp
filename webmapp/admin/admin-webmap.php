@@ -81,7 +81,7 @@ function webmap_options() {
 
         <tr valign="top">
             <th scope="row"><?php _e( "Mostra Pin", 'webmap_net7' ) ?></th>
-            <td><select name="webmapp_map_modal">
+            <td><select name="webmapp_map_show-pin">
                     <option value="true" <?php if( get_option( 'webmapp_map_show-pin' ) == 'true' ) echo 'selected'; ?>>Sì</option>
                     <option value="false" <?php if( get_option( 'webmapp_map_show-pin' ) == 'false' ) echo 'selected'; ?>>No</option>
                 </select>
@@ -90,7 +90,7 @@ function webmap_options() {
 
         <tr valign="top">
             <th scope="row"><?php _e( "Mostra Espandi", 'webmap_net7' ) ?></th>
-            <td><select name="webmapp_map_modal">
+            <td><select name="webmapp_map_show-expand">
                     <option value="true" <?php if( get_option( 'webmapp_map_show-expand' ) == 'true' ) echo 'selected'; ?>>Sì</option>
                     <option value="false" <?php if( get_option( 'webmapp_map_show-expand' ) == 'false' ) echo 'selected'; ?>>No</option>
                 </select>
@@ -99,7 +99,7 @@ function webmap_options() {
 
         <tr valign="top">
             <th scope="row"><?php _e( "Click su Iframe", 'webmap_net7' ) ?></th>
-            <td><select name="webmapp_map_modal">
+            <td><select name="webmapp_map_click-iframe">
                     <option value="true" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'true' ) echo 'selected'; ?>>Sì</option>
                     <option value="false" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'false' ) echo 'selected'; ?>>No</option>
                 </select>
