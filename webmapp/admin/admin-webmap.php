@@ -90,7 +90,7 @@ function webmap_options() {
         </tr>
 
         <tr valign="top">
-            <th scope="row"><?php _e( "Click su Iframe", 'webmap_net7' ) ?></th>
+            <th scope="row"><?php _e( "Apri modale con click su mappa", 'webmap_net7' ) ?></th>
             <td><select name="webmapp_map_click-iframe">
                     <option value="true" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'true' ) echo 'selected'; ?>>Sì</option>
                     <option value="false" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'false' ) echo 'selected'; ?>>No</option>

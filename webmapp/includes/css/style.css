@@ -121,9 +121,9 @@ ul.webmap_cat_checklist ul{
   height: 500px;
 }
 
-.iframe .open-poi-map, .iframe .open-track-map, .iframe .open-modal-map {
+.iframe .open-poi-map, .iframe .open-track-map, .open-modal-map {
   position: absolute;
-  color: #fff;
+  color: #fff!important;
   font-size: 35px;
   background: rgba(0,0,0,0.5);
   padding: 8px 15px;
@@ -134,7 +134,7 @@ ul.webmap_cat_checklist ul{
   cursor: pointer;
 }
 
-.iframe .open-poi-map, .iframe .open-track-map, .iframe .open-modal-map > span {
+.iframe .open-poi-map, .iframe .open-track-map, .open-modal-map > span {
   display: block;
 }
 

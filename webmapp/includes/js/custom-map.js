@@ -173,4 +173,62 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  $custom_shortcode_map = $('#custom-shortcode-map')
+
+  if ($custom_shortcode_map.length) {
+
+    var lat = $custom_shortcode_map.data('lat'),
+      lng = $custom_shortcode_map.data('lng'),
+      zoom = $custom_shortcode_map.data('zoom'),
+      modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + zoom + '/' + lat + '/' + lng + '" width="100%"></iframe></div></div>';
+
+    map = L.map('custom-shortcode-map').setView([lat, lng], zoom)
+
+    L.tileLayer(data.tilesUrl, {
+      layers: [
+        {
+          label: data.label,
+          type: 'maptile',
+          tilesUrl: data.tilesUrl,
+          default: true,
+        }],
+    }).addTo(map)
+
+    html = '<a target="_blank" class="open-modal-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>';
+    $custom_shortcode_map.prepend(html)
+
+    $('.open-modal-map').on('click', function (e) {
+      e.preventDefault();
+      $('body').prepend(modal);
+      $('#modal-map iframe').height($(window).height() * 80 / 100 );
+
+    });
+
+
+    if ( data.click_iframe === 'true' ) {
+      $custom_shortcode_map.css('cursor', 'pointer');
+      $custom_shortcode_map.on('click', function (e) {
+        e.preventDefault();
+        $('body').prepend(modal);
+        $('#modal-map iframe').height($(window).height() * 80 / 100 );
+      });
+    }
+
+
+    $('body').on('click', '.close-modal', function (e) {
+      e.preventDefault();
+      $('#modal-map').remove();
+    });
+
+    map.touchZoom.disable()
+    map.dragging.disable()
+    map.touchZoom.disable()
+    map.doubleClickZoom.disable()
+    map.scrollWheelZoom.disable()
+    map.boxZoom.disable()
+    map.keyboard.disable()
+    $('.leaflet-control-zoom').css('visibility', 'hidden')
+
+  }
+
 });
