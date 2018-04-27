@@ -7,6 +7,8 @@ jQuery(document).ready(function ($) {
     var lat = $custom_poi_map.data('lat'),
       lng = $custom_poi_map.data('lng'),
       id = $custom_poi_map.data('id'),
+      icon_class = $custom_poi_map.data('icon'),
+      color = $custom_poi_map.data('icon-color'),
       modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/poi/' + id + '/' + data.zoom + '" width="100%"></iframe></div></div>';
 
     map = L.map('custom-poi-map').setView([lat, lng], data.zoom)
@@ -22,7 +24,20 @@ jQuery(document).ready(function ($) {
     }).addTo(map)
 
     if ( data.show_pin === 'true' ) {
-      marker = L.marker([lat, lng]).addTo(map)
+
+      if( icon_class !== '' || color !== '' ){
+        var iconMarker = L.VectorMarkers.icon({
+          icon: 'poi',
+          prefix: 'wm',
+          extraClasses: icon_class,
+          markerColor: color,
+          iconSize: [36, 45]
+        });
+        marker = L.marker([lat, lng], {icon: iconMarker}).addTo(map)
+      } else {
+        marker = L.marker([lat, lng]).addTo(map)
+      }
+
 
       if ( data.modal_mode === 'false' ) {
         marker.on('click', function () {

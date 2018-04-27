@@ -52,7 +52,7 @@ function wm_map_shortcode( $atts ) {
 		array(
 			'lat' => '',
 			'lng' => '',
-			'zoom' => '',
+			'zoom' => '16',
 			'height' => '500'
 		),
 		$atts

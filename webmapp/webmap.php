@@ -26,6 +26,7 @@ function webmap_load_textdomain() {
   wp_enqueue_style("webmap_style_net7", plugin_dir_url(__FILE__) . 'includes/css/style.css');
   wp_enqueue_style("webmap_leaflet", plugin_dir_url(__FILE__) . 'third-part/leaflet/leaflet.css');
   wp_enqueue_script("webmap_leaflet_js", plugin_dir_url(__FILE__) . 'third-part/leaflet/leaflet.js');
+  wp_enqueue_style("webmap_leaflet_vector_markers", plugin_dir_url(__FILE__) . 'third-part/leaflet/leaflet-vector-markers.css');
 }
 
 
@@ -34,6 +35,7 @@ function webmapp_load_gpx_script() {
 
   wp_enqueue_script('webmapp-import-gpx', plugin_dir_url(__FILE__) . 'includes/js/import-gpx.js', array('jquery'), '0.1.0', TRUE);
   wp_enqueue_script('webmapp-leaflet-map', plugin_dir_url(__FILE__) . 'includes/js/leaflet-map.js');
+  wp_enqueue_script('webmapp-leaflet-vector-markers', plugin_dir_url(__FILE__) . 'includes/js/leaflet-vector-markers.min.js', array('webmapp-leaflet-map'));
   wp_enqueue_script("jquery-ui-dialog");
   $data = array(
     'upload_url' => admin_url('async-upload.php'),
