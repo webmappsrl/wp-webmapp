@@ -17,6 +17,7 @@ include_once "includes/admin_columns.php";
 include_once "third-part/gisconverter/gisconverter.php";
 
 include_once "includes/custom_types/custom_types.php";
+include_once "includes/custom_templates/custom_templates.php";
 
 add_action('init', 'webmap_load_textdomain');
 
