@@ -117,6 +117,122 @@ function getPoiAddressFields() {
   return $poi_fields;
 }
 
+function getPoiAccessibilityFields() {
+
+  $poi_fields = array(
+
+  // MOBILITY
+
+      array(
+      'key' => 'wm_access_mobility_check',
+      'label' => 'Mobility Impairment',
+      'name' => 'access_mobility_check',
+      'type' => 'true_false',
+      'instructions' => 'Check this if you believe that the point of interest can be considered accessible with regard to mobility'
+      ),
+
+      array(
+      'key' => 'wm_access_mobility_description',
+      'label' => 'Mobility Impairment Description',
+      'name' => 'access_mobility_description',
+      'type' => 'wysiwyg',
+      'instructions' => 'Describe in detail the accessibility of the point of interest for the mobility impairment',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1,
+      'delay' => 1
+      ),
+
+      // HEARING hearing
+      array(
+      'key' => 'wm_access_hearing_check',
+      'label' => 'hearing Impairment',
+      'name' => 'access_hearing_check',
+      'type' => 'true_false',
+      'instructions' => 'Check this if you believe that the point of interest can be considered accessible with regard to hearing'
+      ),
+
+      array(
+      'key' => 'wm_access_hearing_description',
+      'label' => 'hearing Impairment Description',
+      'name' => 'access_hearing_description',
+      'type' => 'wysiwyg',
+      'instructions' => 'Describe in detail the accessibility of the point of interest for the hearing impairment',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1,
+      'delay' => 1
+      ),
+
+      // VISION vision
+      array(
+      'key' => 'wm_access_vision_check',
+      'label' => 'vision Impairment',
+      'name' => 'access_vision_check',
+      'type' => 'true_false',
+      'instructions' => 'Check this if you believe that the point of interest can be considered accessible with regard to vision'
+      ),
+
+      array(
+      'key' => 'wm_access_vision_description',
+      'label' => 'vision Impairment Description',
+      'name' => 'access_vision_description',
+      'type' => 'wysiwyg',
+      'instructions' => 'Describe in detail the accessibility of the point of interest for the vision impairment',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1,
+      'delay' => 1
+      ),
+
+      // COGNITIVE cognitive
+      array(
+      'key' => 'wm_access_cognitive_check',
+      'label' => 'cognitive Impairment',
+      'name' => 'access_cognitive_check',
+      'type' => 'true_false',
+      'instructions' => 'Check this if you believe that the point of interest can be considered accessible with regard to cognitive'
+      ),
+
+      array(
+      'key' => 'wm_access_cognitive_description',
+      'label' => 'cognitive Impairment Description',
+      'name' => 'access_cognitive_description',
+      'type' => 'wysiwyg',
+      'instructions' => 'Describe in detail the accessibility of the point of interest for the cognitive impairment',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1,
+      'delay' => 1
+      ),
+
+      // FOOD INTOLERANCE food
+
+      array(
+      'key' => 'wm_access_food_check',
+      'label' => 'food Impairment',
+      'name' => 'access_food_check',
+      'type' => 'true_false',
+      'instructions' => 'Check this if you believe that the point of interest can be considered accessible with regard to food intolerance'
+      ),
+
+      array(
+      'key' => 'wm_access_food_description',
+      'label' => 'food Impairment Description',
+      'name' => 'access_food_description',
+      'type' => 'wysiwyg',
+      'instructions' => 'Describe in detail the accessibility of the point of interest for the food intolerance',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1,
+      'delay' => 1
+      )
+
+  );
+
+  return $poi_fields;
+}
+
 function getPoiContactFields() {
 
   $poi_fields = array(
@@ -202,6 +318,22 @@ if (function_exists('acf_add_local_field_group')):
           ),
       ),
       'menu_order' => 2,
+      'active' => 1
+  ));
+
+  acf_add_local_field_group(array(
+      'title' => 'Accesibility info',
+      'fields' => getPoiAccessibilityFields(),
+      'location' => array(
+          array(
+              array(
+                  'param' => 'post_type',
+                  'operator' => '==',
+                  'value' => 'poi',
+              ),
+          ),
+      ),
+      'menu_order' => 3,
       'active' => 1
   ));
 
