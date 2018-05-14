@@ -10,13 +10,11 @@ add_action('rest_api_init', function () {
 
 
   // POIS
-  $poi_fields = getPoiCustomFields();
-  registerField("poi", $poi_fields);
-  $poi_fields = getPoiAddressFields();
-  registerField("poi", $poi_fields);
-  $poi_fields = getPoiContactFields();
-  registerField("poi", $poi_fields);
-
+  registerField("poi", getPoiCustomFields());
+  registerField("poi", getPoiAddressFields());
+  registerField("poi", getPoiContactFields());
+  registerField("poi", getPoiAccessibilityFields());
+  
   // ROUTES
   registerField("route", getRouteCustomFields());
 
