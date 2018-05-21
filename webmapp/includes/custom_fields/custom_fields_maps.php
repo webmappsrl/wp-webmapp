@@ -256,6 +256,15 @@ array(
       'instructions' => 'Check this option if you want to remove Attrbution page from app and webapp Main Menu',
       'default_value' => 0
     ),
+    // showAccessibilityButtons
+    array (
+      'key' => 'wp_map_show_accessibility_buttons',
+      'label' => 'Activate accessibility features (showAccessibilityButtons) on APP and WEBAPP',
+      'name' => 'show_accessibility_buttons',
+      'type' => 'true_false',
+      'instructions' => 'Check this option if you want to activate Accesibility features (show Accessibility Buttons on APP and WEBAPP)',
+      'default_value' => 0
+    ),
 
     );
     return $map_fields;
