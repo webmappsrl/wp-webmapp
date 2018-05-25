@@ -9,6 +9,20 @@
 
 
 // Register Custom Post Type VOUCHER
+function wm_cpt_voucher_capabilities() {
+  $capabilities = array(
+		'edit_post'             => 'edit_voucher',
+		'read_post'             => 'read_voucher',
+		'delete_post'           => 'delete_voucher',
+		'edit_posts'            => 'edit_vouchers',
+		'edit_others_posts'     => 'edit_others_vouchers',
+		'publish_posts'         => 'publish_vouchers',
+		'read_private_posts'    => 'read_private_vouchers'
+		);
+  return $capabilities;
+}
+
+
 function wm_cpt_voucher() {
 
 	$labels = array(
@@ -40,6 +54,7 @@ function wm_cpt_voucher() {
 		'items_list_navigation' => __( 'Voucher list navigation', 'webmap_net7' ),
 		'filter_items_list'     => __( 'Filter Voucher list', 'webmap_net7' ),
 	);
+   
 	$args = array(
 		'label'                 => __( 'Voucher', 'webmap_net7' ),
 		'description'           => __( 'Voucher used to activate download', 'webmap_net7' ),
@@ -57,7 +72,9 @@ function wm_cpt_voucher() {
 		'has_archive'           => false,
 		'exclude_from_search'   => true,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'map_meta_cap'          => true,
+        'capability_type'       => 'voucher',
+		'capabilities'          => wm_cpt_voucher_capabilities(),
 		'show_in_rest'          => false,
 	);
 	register_post_type( 'voucher', $args );
