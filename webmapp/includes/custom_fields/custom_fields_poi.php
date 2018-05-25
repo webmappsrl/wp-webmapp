@@ -349,6 +349,38 @@ function getPoiAccessibilityFields() {
   return $poi_fields;
 }
 
+function getPoiAdvancedFields() {
+  $poi_fields = array(
+    array(
+      'key' => 'wm_poi_tab_advanced',
+      'label' => 'Advanced',
+      'type' => 'tab',
+      'required' => 0,
+      'placement' => 'top',
+      'endpoint' => 0,
+    ),
+      array(
+          'key' => 'wm_poi_content_from',
+          'label' => 'Content from',
+          'name' => 'content_from',
+          'post_type' => array(
+              0 => 'poi',
+          ),
+          'filters' => array(
+              0 => 'search',
+              1 => 'post_type',
+              2 => 'taxonomy',
+          ),
+          'type' => 'relationship',
+          'max' => '1',
+          'return_format' => 'object',
+          'instructions' => 'Use this field to set the content of this poi from another POI'
+
+      ));
+  return $poi_fields;
+}
+
+
 function getPoiAllFields() {
   $all = array_merge(
     getPoiPositionFields(),
@@ -357,7 +389,8 @@ function getPoiAllFields() {
     getPoiContactFields(),
     getPoiLinkFields(), 
     getPoiInfoFields(),
-    getPoiAccessibilityFields()
+    getPoiAccessibilityFields(),
+    getPoiAdvancedFields()
     );
   return $all;
 }
