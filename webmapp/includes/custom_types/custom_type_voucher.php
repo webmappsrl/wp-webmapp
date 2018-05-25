@@ -11,13 +11,16 @@
 // Register Custom Post Type VOUCHER
 function wm_cpt_voucher_capabilities() {
   $capabilities = array(
-		'edit_post'             => 'edit_voucher',
-		'read_post'             => 'read_voucher',
-		'delete_post'           => 'delete_voucher',
-		'edit_posts'            => 'edit_vouchers',
-		'edit_others_posts'     => 'edit_others_vouchers',
-		'publish_posts'         => 'publish_vouchers',
-		'read_private_posts'    => 'read_private_vouchers'
+'delete_others_posts' => 'delete_others_vouchers',
+'delete_posts' => 'delete_vouchers',
+'delete_private_posts' => 'delete_private_vouchers',
+'delete_published_posts' => 'delete_published_vouchers',
+'edit_others_posts' => 'edit_others_vouchers',
+'edit_posts' => 'edit_vouchers',
+'edit_private_posts' => 'edit_private_vouchers',
+'edit_published_posts' => 'edit_published_vouchers',
+'publish_posts' => 'publish_vouchers',
+'read_private_posts' => 'read_private_vouchers'
 		);
   return $capabilities;
 }
