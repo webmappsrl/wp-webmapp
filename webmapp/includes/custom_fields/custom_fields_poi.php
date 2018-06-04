@@ -132,7 +132,15 @@ function getPoiContactFields() {
       'name' => 'capacity',
       'type' => 'text',
       'instructions' => 'Insert the capacity a facility is suitable for.'
-      )
+      ),
+	  array(
+	  'key' => 'wm_poi_stars',
+	  'label' => 'Stars',
+	  'name' => 'stars',
+	  'type' => 'text',
+	  'instructions' => 'Stars rating for hotels.'
+	  )
+
 
   );
 
