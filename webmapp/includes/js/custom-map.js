@@ -151,7 +151,9 @@ jQuery(document).ready(function ($) {
     center = map.getCenter()
     zoom = map.getZoom()
 
-    var modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/?map=' + zoom + '/' + center.lat + '/' + center.lng + '" width="100%"></iframe></div></div>';
+    id = $custom_track_map.data('id');
+
+    var modal = '<div id="modal-map"><div class="modal-content"><i class="fa fa-times close-modal" aria-hidden="true"></i><iframe src="' + data.appUrl + '/#/track/' + id +'" width="100%"></iframe></div></div>';
 
     if ( data.show_expand === 'true' ) {
 
