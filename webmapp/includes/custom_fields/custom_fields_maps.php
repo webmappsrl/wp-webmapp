@@ -112,6 +112,14 @@ array(
           'type' => 'relationship',
           'instructions' => 'Select pages to be added to the menu'
           ),
+            array (
+      'key' => 'wp_map_pages_no_first_level',
+      'label' => 'NO first level',
+      'name' => 'pages_no_first_level',
+      'type' => 'true_false',
+      'instructions' => 'By default pages are in menu under ABOUT item. Check this if you want to put pages directly in the main menu.',
+      'default_value' => 0
+    ),
       array (
       'key' => 'wp_map_has_offline',
       'label' => 'OFFLINE',
