@@ -81,7 +81,8 @@ function codex_cpt_init() {
       'author',
       'thumbnail',
       'excerpt',
-      'revisions'
+      'revisions',
+	    'comments'
     )
   );
 
@@ -125,7 +126,8 @@ function codex_cpt_init() {
       'author',
       'thumbnail',
       'excerpt',
-      'revisions'
+      'revisions',
+	    'comments'
     )
   );
 
