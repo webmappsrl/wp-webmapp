@@ -30,6 +30,10 @@ function register_webmap_settings() {
   register_setting('net7-webmap-group', 'webmapp_map_show-pin');
   register_setting('net7-webmap-group', 'webmapp_map_show-expand');
   register_setting('net7-webmap-group', 'webmapp_map_click-iframe');
+  register_setting('net7-webmap-group', 'webmapp_map_no_app');
+  register_setting('net7-webmap-group', 'webmapp_map_filter');
+  register_setting('net7-webmap-group', 'webmapp_map_activate_zoom');
+  register_setting('net7-webmap-group', 'webmapp_has_route');
 }
 
 function webmap_options() {
@@ -94,6 +98,42 @@ function webmap_options() {
             <td><select name="webmapp_map_click-iframe">
                     <option value="true" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'true' ) echo 'selected'; ?>>Sì</option>
                     <option value="false" <?php if( get_option( 'webmapp_map_click-iframe' ) == 'false' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><?php _e( "Disattiva modale", 'webmap_net7' ) ?></th>
+            <td><?php _e( 'Disattiva la modale che incorpora l\'iframe dell\'app e attiva il click sui marker.'); ?>
+                <select name="webmapp_map_no_app">
+                    <option value="true" <?php if( get_option( 'webmapp_map_no_app' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_no_app' ) != 'true' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><?php _e( "Attiva filtri", 'webmap_net7' ) ?></th>
+            <td><?php _e( 'Attiva i filtri per vedere i poi vicini alla track.'); ?>
+                <select name="webmapp_map_filter">
+                    <option value="true" <?php if( get_option( 'webmapp_map_filter' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_filter' ) != 'true' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><?php _e( "Attiva Zoom", 'webmap_net7' ) ?></th>
+            <td><?php _e( 'Attiva lo zoom e il trascinamento sulla mappa'); ?>
+                <select name="webmapp_map_activate_zoom">
+                    <option value="true" <?php if( get_option( 'webmapp_map_activate_zoom' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_map_activate_zoom' ) != 'true' ) echo 'selected'; ?>>No</option>
+                </select>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><?php _e( "Il sito ha le routes", 'webmap_net7' ) ?></th>
+            <td><?php _e( 'Il sito utilizza almeno una route'); ?>
+                <select name="webmapp_has_route">
+                    <option value="true" <?php if( get_option( 'webmapp_has_route' ) == 'true' ) echo 'selected'; ?>>Sì</option>
+                    <option value="false" <?php if( get_option( 'webmapp_has_route' ) != 'true' ) echo 'selected'; ?>>No</option>
                 </select>
             </td>
         </tr>
