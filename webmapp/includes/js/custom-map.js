@@ -37,7 +37,6 @@
       })
 
       $.when(poi).done(function (e) {
-        console.log(e);
 
         if (data.show_pin === 'true') {
 
@@ -243,7 +242,7 @@
         e.preventDefault()
         $('#modal-map').remove()
       })
-      
+
       if (data.activate_zoom !== 'true'){
         disableZoomAndDraggable(map);
       }
