@@ -19,9 +19,9 @@
             label: data.label,
             type: 'maptile',
             tilesUrl: data.tilesUrl,
-            default: true,
+            default: true
           }],
-        maxZoom: 17,
+        maxZoom: 17
       }).addTo(map);
 
 
@@ -32,8 +32,9 @@
           console.log(text)
         },
         error: function (xhr) {
+          console.log(xhr);
           getDataPoiFromTemplate(data, icon_class, color, map, lat, lng, modal);
-        },
+        }
       })
 
       $.when(poi).done(function (e) {
@@ -55,16 +56,14 @@
           }
 
           if (data.no_app === 'true') {
+            marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties.address)
+          }
+          else {
             marker.on('click', function () {
-
               $('body').prepend(modal)
               $('#modal-map iframe').height($(window).height() * 80 / 100)
 
             })
-          }
-          else {
-            marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' +
-              e.properties.address)
           }
         }
 
