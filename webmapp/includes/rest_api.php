@@ -246,6 +246,11 @@ function webmapp_user_data(WP_REST_Request $request) {
     $user_data = $user->data;
     $user_data->first_name = get_user_meta($user->ID, "first_name", TRUE);
     $user_data->last_name = get_user_meta($user->ID, "last_name", TRUE);
+    $user_data->voucher = get_user_meta($user->ID, "user_voucher", TRUE);
+    $user_data->image = get_user_meta($user->ID, "user_image", TRUE);
+    $user_data->gender = get_user_meta($user->ID, "gender", TRUE);
+    $user_data->type = get_user_meta($user->ID, "user_type", TRUE);
+    $user_data->country = get_user_meta($user->ID, "country", TRUE);
     $user_data->user_pass = "";
     return new WP_REST_Response($user_data, 200);
   }
@@ -427,7 +432,7 @@ function webmapp_user_registration(WP_REST_Request $request) {
   $newsletter = $request->get_param('newsletter');
   $country = $request->get_param('country');
   $type = $request->get_param('type');
-  $sesso = $request->get_param('sesso');
+  $gender = $request->get_param('gender');
 
   $subject = $app_name . ' - Nuova registrazione';
   
@@ -455,10 +460,8 @@ function webmapp_user_registration(WP_REST_Request $request) {
       update_user_meta( $user_id, 'newsletter', true);
     }
       update_user_meta( $user_id, 'country', $country);
-      update_user_meta( $user_id, 'wpcf-country', $country);
-      update_user_meta( $user_id, 'wpcf-pf_type', $type);
-      update_user_meta( $user_id, 'wpcf-pf_sesso', $sesso);
-      update_user_meta( $user_id, 'wpcf-user_image', $image);
+      update_user_meta( $user_id, 'user_type', $type);
+      update_user_meta( $user_id, 'gender', $gender);
 
     // Set the role
     $user = new WP_User($user_id);

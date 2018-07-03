@@ -22,12 +22,40 @@ $user_fields = array (
       'maxlength' => '',
     ),
     array (
-        'key' => 'wm_user_country',
-        'name' => 'country',
-        'label' => 'Country',
-        'type' => 'text',
-        'instructions' => 'Insert the user country'
-      )
+		'key' => 'wm_user_country',
+		'name' => 'country',
+		'label' => 'Country',
+		'type' => 'text',
+		'instructions' => 'Insert the user country'
+	),
+	array (
+		'key' => 'wm_user_gender',
+		'name' => 'gender',
+		'label' => 'Gender',
+		'type' => 'text',
+		'instructions' => 'Insert the gender'
+	),
+	array (
+		'key' => 'wm_user_type',
+		'name' => 'user_type',
+		'label' => 'Type',
+		'type' => 'text',
+		'instructions' => 'Insert the type'
+	),
+	array (
+		'key' => 'wm_user_image',
+		'name' => 'user_image',
+		'label' => 'Country',
+		'type' => 'text',
+		'instructions' => 'Insert the image url'
+	),
+	array (
+		'key' => 'wm_user_voucher',
+		'name' => 'user_voucher',
+		'label' => 'Voucher',
+		'type' => 'text',
+		'instructions' => 'Voucher code, not overwrite or modify'
+	),
   );
 
 return $user_fields;
