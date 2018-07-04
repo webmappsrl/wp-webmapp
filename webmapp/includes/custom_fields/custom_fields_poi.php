@@ -21,7 +21,27 @@ function getPoiPositionFields() {
           'center_lng' => '11.0812834',
           'zoom' => '7',
           'instructions' => 'Insert point of interests from map to get coordinates'
-      ));
+      ),
+	array(
+		'key' => 'wm_poi_coordinate',
+		'label' => 'Coordinate',
+		'name' => 'poi_coordinate',
+		'type' => 'open_street_map',
+		'return_format' => 'leaflet',
+		'center_lat' => '43.6551217',
+		'center_lng' => '11.0812834',
+		'zoom' => '7',
+		'instructions' => 'Insert point of interests from map to get coordinates',
+		'allow_map_layers' => 0,
+		'default_leaflet_layers' => array(
+			0 => 'OpenStreetMap',
+		),
+		'default_osm_layer' => 'mapnik',
+		'address' => '',
+		'map_layers' => array(
+		),
+	)
+	);
   return $poi_fields;
 }
 
