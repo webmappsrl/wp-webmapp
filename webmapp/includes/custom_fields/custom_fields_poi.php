@@ -23,9 +23,9 @@ function getPoiPositionFields() {
           'instructions' => 'Insert point of interests from map to get coordinates'
       ),
 	array(
-		'key' => 'wm_poi_coordinate',
-		'label' => 'Coordinate',
-		'name' => 'poi_coordinate',
+		'key' => 'wm_poi_coordinates',
+		'label' => 'Coordinates',
+		'name' => 'coordinates',
 		'type' => 'open_street_map',
 		'return_format' => 'leaflet',
 		'center_lat' => '43.6551217',
