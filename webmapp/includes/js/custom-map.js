@@ -283,14 +283,14 @@
 
       })
 
-      if (data.click_iframe === 'true') {
-        $custom_shortcode_map.css('cursor', 'pointer')
-        $custom_shortcode_map.on('click', function (e) {
-          e.preventDefault()
-          $('body').prepend(modal)
-          $('#modal-map iframe').height($(window).height() * 80 / 100)
-        })
-      }
+
+      $custom_shortcode_map.css('cursor', 'pointer')
+      $custom_shortcode_map.on('click', function (e) {
+        e.preventDefault()
+        $('body').prepend(modal)
+        $('#modal-map iframe').height($(window).height() * 80 / 100)
+      })
+
 
       $('body').on('click', '.close-modal', function (e) {
         e.preventDefault()
@@ -344,11 +344,5 @@
   }
 
 
-  function getWMCatTermField( baseUrl, taxonomy, id ){
-    var acf = '';
-
-
-
-  }
 
 })(jQuery);
