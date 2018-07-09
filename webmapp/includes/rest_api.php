@@ -271,6 +271,7 @@ add_action('rest_api_init', function () {
 // Map.conf API
 require_once('rest_api/map_conf.php');
 require_once('rest_api/api_voucher.php');
+require_once('rest_api/api_purchase.php');
 
 /**
  * Returns the geojson object for a route
