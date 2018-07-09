@@ -13,7 +13,7 @@
           color = $custom_poi_map.data('icon-color');
 
       var map = L.map('custom-poi-map').setView([lat, lng], data.zoom);
-      var basemap = L.tileLayer(data.tilesUrl, {
+      L.tileLayer(data.tilesUrl, {
         layers: [
           {
             label: data.label,
@@ -119,7 +119,8 @@
             type: 'maptile',
             tilesUrl: data.tilesUrl,
             default: true
-          }]
+          }],
+        maxZoom: 17
       }).addTo(map);
 
       var track = $.ajax({
