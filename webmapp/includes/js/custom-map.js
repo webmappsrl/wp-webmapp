@@ -51,6 +51,22 @@
             })
             marker = L.marker([lat, lng], {icon: iconMarker}).addTo(map)
           }
+          else if (icon_class !== '') {
+            var iconMarker = L.VectorMarkers.icon({
+              markerColor: color,
+              iconSize: [36, 45],
+            })
+            marker = L.marker([lat, lng], {icon: iconMarker}).addTo(map)
+          }
+          else if (color !== '') {
+            var iconMarker = L.VectorMarkers.icon({
+              icon: 'poi',
+              prefix: 'wm',
+              extraClasses: icon_class,
+              iconSize: [36, 45],
+            })
+            marker = L.marker([lat, lng], {icon: iconMarker}).addTo(map)
+          }
           else {
             marker = L.marker([lat, lng]).addTo(map)
           }
@@ -131,6 +147,28 @@
         },
         error: function (xhr) {
           console.log(xhr);
+          $related_pois = $('.related_poi');
+          if ($related_pois.length) {
+            $related_pois.each(function (index, element) {
+              console.log(element);
+              var lat = $(element).data('lat'),
+                lng = $(element).data('lng'),
+                title = $(element).data('title'),
+                id = $(element).data('id');
+              /*
+              var iconMarker = L.VectorMarkers.icon({
+                icon: 'poi',
+                prefix: 'wm',
+                extraClasses: icon_class,
+                markerColor: color,
+                iconSize: [36, 45],
+              })
+              marker = L.marker([lat, lng], {icon: iconMarker}).addTo(map) */
+              marker = L.marker([lat, lng]).addTo(map);
+              marker.bindPopup('<a href="/?p='+ id +'" title="'+ title  +'"><strong>' + title + '</strong></a>');
+
+            })
+          }
 
         }
       })
@@ -144,19 +182,56 @@
 
       $.when(track).done(function (element, text, xhr) {
 
+        var related = element.properties.related.poi.related;
+
+        $.each( related, function (index, value) {
+          var term_id = value.webmapp_category["0"],
+          icon = terms_icon[term_id].icon,
+          color = terms_icon[term_id].color;
+
+          if ( color !== '' ){
+            var iconMarker = L.VectorMarkers.icon({
+              icon: 'poi',
+              prefix: 'wm',
+              extraClasses: icon,
+              markerColor: color,
+              iconSize: [36, 45]
+            });
+            marker = L.marker([value.lat, value.lon], {icon: iconMarker}).addTo(map);
+          } else {
+            marker = L.marker([value.lat, value.lon]).addTo(map);
+          }
+          marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
+        });
+
         if( data.filter === 'true' ) {
 
           var markers = [],
-          //baseUrl = window.location.protocol + '://' + window.location.hostname,
           neighbors = element.properties.related.poi.neighbors;
+
           var sem = true;
           $('.wm_map_filter').on('click', function(event){
             event.preventDefault();
 
             if(sem){
-
               $.each( neighbors, function (index, value) {
+                var term_id = value.webmapp_category["0"],
+                  icon = terms_icon[term_id].icon,
+                  color = terms_icon[term_id].color;
+
+                if ( color !== '' ){
+                  var iconMarker = L.VectorMarkers.icon({
+                    icon: 'poi',
+                    prefix: 'wm',
+                    extraClasses: icon,
+                    markerColor: color,
+                    iconSize: [36, 45]
+                  });
+                  marker = L.marker([value.lat, value.lon], {icon: iconMarker}).addTo(map);
+                } else {
                   marker = L.marker([value.lat, value.lon]).addTo(map);
+                }
+                  
                   marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
                   markers.push(marker);
               });
@@ -179,22 +254,6 @@
         }
 
       });
-
-      $related_pois = $('.related_poi');
-      if ($related_pois.length) {
-        $related_pois.each(function (index, element) {
-          console.log(element);
-          var lat = $(element).data('lat'),
-            lng = $(element).data('lng'),
-            title = $(element).data('title'),
-            id = $(element).data('id');
-
-
-            marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup('<a href="/?p='+ id +'" title="'+ title  +'"><strong>' + title + '</strong></a>');
-
-        })
-      }
 
       var geojson = $custom_track_map.data('geojson');
       L.geoJSON(geojson).addTo(map)

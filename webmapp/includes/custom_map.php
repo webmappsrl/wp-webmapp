@@ -53,7 +53,22 @@ function webmap_custom_map_scripts() {
 		$data['activate_zoom'] = $activateZoom;
 	}
 
+	$terms = get_terms([
+		'taxonomy' => 'webmapp_category',
+		'hide_empty' => false,
+	]);
+	$icons = array();
+
+	foreach ( $terms as $term){
+		$icon = get_field('wm_taxonomy_icon', 'webmapp_category_' . $term->term_id);;
+		$color = get_field('wm_taxonomy_color', 'webmapp_category_' . $term->term_id);
+		$icons[$term->term_id]['name'] = $term->name;
+		$icons[$term->term_id]['icon'] = $icon;
+		$icons[$term->term_id]['color'] = $color;
+	}
+
 	wp_localize_script( 'custom-map', 'data', $data );
+	wp_localize_script( 'custom-map', 'terms_icon', $icons );
 	wp_enqueue_script( 'custom-map' );
 
 }
