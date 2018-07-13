@@ -21,7 +21,7 @@
             tilesUrl: data.tilesUrl,
             default: true
           }],
-        maxZoom: 17
+        //maxZoom: 17
       }).addTo(map);
 
 
@@ -136,7 +136,7 @@
             tilesUrl: data.tilesUrl,
             default: true
           }],
-        maxZoom: 17
+        //maxZoom: 17
       }).addTo(map);
 
       var track = $.ajax({
@@ -231,7 +231,7 @@
                 } else {
                   marker = L.marker([value.lat, value.lon]).addTo(map);
                 }
-                  
+
                   marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
                   markers.push(marker);
               });
