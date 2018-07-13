@@ -332,25 +332,24 @@
           }],
       }).addTo(map)
 
+      if (data.click_iframe === 'true') {
+        html = '<a target="_blank" class="open-modal-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>'
+        $custom_shortcode_map.prepend(html);
 
-      html = '<a target="_blank" class="open-modal-map" href="#" title="apri tutta la mappa"><span class="wm-icon-arrow-expand"></span></a>'
-      $custom_shortcode_map.prepend(html);
+        $('.open-modal-map').on('click', function (e) {
+          e.preventDefault()
+          $('body').prepend(modal)
+          $('#modal-map iframe').height($(window).height() * 80 / 100)
 
-      $('.open-modal-map').on('click', function (e) {
-        e.preventDefault()
-        $('body').prepend(modal)
-        $('#modal-map iframe').height($(window).height() * 80 / 100)
+        })
 
-      })
-
-
-      $custom_shortcode_map.css('cursor', 'pointer')
-      $custom_shortcode_map.on('click', function (e) {
-        e.preventDefault()
-        $('body').prepend(modal)
-        $('#modal-map iframe').height($(window).height() * 80 / 100)
-      })
-
+        $custom_shortcode_map.css('cursor', 'pointer')
+        $custom_shortcode_map.on('click', function (e) {
+          e.preventDefault()
+          $('body').prepend(modal)
+          $('#modal-map iframe').height($(window).height() * 80 / 100)
+        })
+      }
 
       $('body').on('click', '.close-modal', function (e) {
         e.preventDefault()
@@ -402,7 +401,5 @@
     map.keyboard.disable()
     jQuery('.leaflet-control-zoom').css('visibility', 'hidden')
   }
-
-
 
 })(jQuery);
