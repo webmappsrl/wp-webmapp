@@ -151,7 +151,7 @@
           $related_pois = $('.related_poi');
           if ($related_pois.length) {
             $related_pois.each(function (index, element) {
-              console.log(element);
+
               var lat = $(element).data('lat'),
                 lng = $(element).data('lng'),
                 title = $(element).data('title'),
@@ -176,7 +176,7 @@
 
       if( data.filter === 'true' ) {
         map.doubleClickZoom.disable();
-        var btFilter = '<a target="_blank" class="wm_map_filter" href="" title="attiva poi vicini" data-toggle="true" ><span class="wm-icon-marker-15"></span> <span class="wm_filter_text">data.labelActive</span> ' + data.labelFilters + '</a>';
+        var btFilter = '<a target="_blank" class="wm_map_filter" href="" title="attiva poi vicini" data-toggle="true" ><span class="wm-icon-marker-15"></span> <span class="wm_filter_text">' + data.labelActive +'</span> ' + data.labelFilters + '</a>';
         $custom_track_map.prepend(btFilter);
 
       }
@@ -186,8 +186,11 @@
         var related = element.properties.related.poi.related;
 
         $.each( related, function (index, value) {
-          var term_id = value.webmapp_category["0"],
-          icon = terms_icon[term_id].icon,
+          console.log(value);
+          console.log(terms_icon);
+          var term_id = value.webmapp_category["0"];
+          console.log(term_id);
+          var icon = terms_icon[term_id].icon,
           color = terms_icon[term_id].color;
 
           if ( color !== '' ){
@@ -216,11 +219,11 @@
 
             if(sem){
               $.each( neighbors, function (index, value) {
-                console.log(value);
+
                 var term_id = value.webmapp_category["0"],
                   icon = terms_icon[term_id].icon,
                   color = terms_icon[term_id].color;
-                console.log(term_id);
+
 
                 if ( color !== '' ){
                   var iconMarker = L.VectorMarkers.icon({
