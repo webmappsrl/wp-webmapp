@@ -56,10 +56,27 @@ function webmap_custom_map_scripts() {
 		$data['activate_zoom'] = $activateZoom;
 	}
 
-	$terms = get_terms([
-		'taxonomy' => 'webmapp_category',
-		'hide_empty' => false,
-	]);
+	global $sitepress;
+	$taxonomy = 'webmapp_category';
+	if ( $sitepress ) {
+		remove_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ) );
+		remove_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ) );
+		remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
+		$terms = get_terms([
+			'taxonomy' => $taxonomy,
+			'hide_empty' => false,
+		]);
+		add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 4 );
+		add_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ), 1, 1 );
+		add_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ), 10, 2 );
+	}
+	else {
+		$terms = get_terms([
+			'taxonomy' => $taxonomy,
+			'hide_empty' => false,
+		]);
+	}
+
 	$icons = array();
 
 	foreach ( $terms as $term){
