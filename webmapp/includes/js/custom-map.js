@@ -72,7 +72,11 @@
           }
 
           if (data.no_app === 'true') {
-            marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties.address)
+            if ( e.properties.address !== 'undefined' ){
+              marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties.address)
+            } else {
+              marker.bindPopup('<strong>' + e.properties.name + '</strong>')
+            }
           }
           else {
             marker.on('click', function () {
