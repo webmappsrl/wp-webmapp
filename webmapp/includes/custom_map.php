@@ -39,6 +39,9 @@ function webmap_custom_map_scripts() {
 		'show_pin' => $pin,
 		'show_expand' => $expand,
 		'click_iframe' => $click,
+		'labelFilters' => __('punti d\'interesse vicini', 'webmapp'),
+		'labelDeactive' => __('Disattiva', 'webmapp'),
+		'labelActive' => __('Attiva', 'webmapp'),
 	);
 
 	if (!empty($no_app)){

@@ -72,11 +72,8 @@
           }
 
           if (data.no_app === 'true') {
-            if ( e.properties.address !== 'undefined' ){
-              marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties.address)
-            } else {
-              marker.bindPopup('<strong>' + e.properties.name + '</strong>')
-            }
+            marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties["addr:street"] + ' ' + e.properties["addr:housenumber"] )
+
           }
           else {
             marker.on('click', function () {
@@ -179,7 +176,7 @@
 
       if( data.filter === 'true' ) {
         map.doubleClickZoom.disable();
-        var btFilter = '<a target="_blank" class="wm_map_filter" href="" title="attiva poi vicini" data-toggle="true" ><span class="wm-icon-marker-15"></span> <span class="wm_filter_text">Attiva</span> punti d\'interesse vicini</a>';
+        var btFilter = '<a target="_blank" class="wm_map_filter" href="" title="attiva poi vicini" data-toggle="true" ><span class="wm-icon-marker-15"></span> <span class="wm_filter_text">data.labelActive</span> ' + data.labelFilters + '</a>';
         $custom_track_map.prepend(btFilter);
 
       }
@@ -219,9 +216,11 @@
 
             if(sem){
               $.each( neighbors, function (index, value) {
+                console.log(value);
                 var term_id = value.webmapp_category["0"],
                   icon = terms_icon[term_id].icon,
                   color = terms_icon[term_id].color;
+                console.log(term_id);
 
                 if ( color !== '' ){
                   var iconMarker = L.VectorMarkers.icon({
@@ -239,7 +238,7 @@
                   marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
                   markers.push(marker);
               });
-              $('.wm_filter_text').text('Disattiva');
+              $('.wm_filter_text').text(data.labelDeactive);
               $('.wm-icon-marker-15').addClass('wm-icon-marker-stroked-15');
               sem = false;
             } else {
@@ -248,7 +247,7 @@
                 map.removeLayer(marker);
               });
               markers = [];
-              $('.wm_filter_text').text('Attiva');
+              $('.wm_filter_text').text(data.labelActive);
               $('.wm-icon-marker-15').removeClass('wm-icon-marker-stroked-15');
               sem = true;
             }
