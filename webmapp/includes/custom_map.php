@@ -56,35 +56,25 @@ function webmap_custom_map_scripts() {
 		$data['activate_zoom'] = $activateZoom;
 	}
 
-	global $sitepress;
-	$taxonomy = 'webmapp_category';
-	if ( $sitepress ) {
-		remove_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ) );
-		remove_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ) );
-		remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
-		$terms = get_terms([
-			'taxonomy' => $taxonomy,
-			'hide_empty' => false,
-		]);
-		add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 4 );
-		add_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ), 1, 1 );
-		add_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ), 10, 2 );
-	}
-	else {
-		$terms = get_terms([
-			'taxonomy' => $taxonomy,
-			'hide_empty' => false,
-		]);
-	}
+
+	$terms = get_terms([
+		'taxonomy' => 'webmapp_category',
+		'hide_empty' => false,
+	]);
 
 	$icons = array();
 
 	foreach ( $terms as $term){
-		$icon = get_field('wm_taxonomy_icon', 'webmapp_category_' . $term->term_id);;
-		$color = get_field('wm_taxonomy_color', 'webmapp_category_' . $term->term_id);
-		$icons[$term->term_id]['name'] = $term->name;
-		$icons[$term->term_id]['icon'] = $icon;
-		$icons[$term->term_id]['color'] = $color;
+		if( ICL_LANGUAGE_CODE == 'en' ) {
+			$term_id = apply_filters( 'wpml_object_id', $term->term_id, 'webmapp_category', false, 'it'  );
+		} else {
+			$term_id = $term->term_id;
+		}
+		$icon = get_field('wm_taxonomy_icon', 'webmapp_category_' . $term_id);
+		$color = get_field('wm_taxonomy_color', 'webmapp_category_' . $term_id);
+		$icons[$term_id]['name'] = $term->name;
+		$icons[$term_id]['icon'] = $icon;
+		$icons[$term_id]['color'] = $color;
 	}
 
 	wp_localize_script( 'custom-map', 'data', $data );
