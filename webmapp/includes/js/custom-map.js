@@ -184,8 +184,7 @@
       $.when(track).done(function (element, text, xhr) {
 
         var related = element.properties.related.poi.related;
-        console.log(related);
-        console.log(terms_icon);
+
         $.each( related, function (index, value) {
 
           var term_id = value.webmapp_category["0"];
