@@ -204,7 +204,13 @@
           } else {
             marker = L.marker([value.lat, value.lon]).addTo(map);
           }
-          marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
+          if ($lang){
+            url = '/' + lang + '/?p=' + index;
+          } else {
+            url = '/?p='+index;
+          }
+
+          marker.bindPopup('<a href="'+ url +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
         });
 
         if( data.filter === 'true' ) {
