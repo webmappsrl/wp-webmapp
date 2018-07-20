@@ -204,7 +204,7 @@
           } else {
             marker = L.marker([value.lat, value.lon]).addTo(map);
           }
-          if ($lang){
+          if (lang){
             url = '/' + lang + '/?p=' + index;
           } else {
             url = '/?p='+index;
