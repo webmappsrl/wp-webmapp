@@ -120,8 +120,8 @@
         $('#modal-map').remove()
       });
 
-      if (data.activateZoom !== 'true'){
-        disableZoomAndDraggable(map)
+      if (data.activate_zoom !== 'true'){
+        disableZoomAndDraggable(map);
       }
     }
 
