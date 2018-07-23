@@ -204,13 +204,8 @@
           } else {
             marker = L.marker([value.lat, value.lon]).addTo(map);
           }
-          if (lang){
-            url = '/' + lang + '/?p=' + index;
-          } else {
-            url = '/?p='+index;
-          }
 
-          marker.bindPopup('<a href="'+ url +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
+          marker.bindPopup('<a href="'+ value.web +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
         });
 
         if( data.filter === 'true' ) {
@@ -243,7 +238,7 @@
                   marker = L.marker([value.lat, value.lon]).addTo(map);
                 }
 
-                  marker.bindPopup('<a href="/?p='+ index +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
+                  marker.bindPopup('<a href="'+ value.web +'" title="'+ value.name  +'"><strong>' + value.name + '</strong></a>');
                   markers.push(marker);
               });
               $('.wm_filter_text').text(data.labelDeactive);

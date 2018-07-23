@@ -67,7 +67,6 @@ function webmap_custom_map_scripts() {
 	foreach ( $terms as $term){
 		if( ICL_LANGUAGE_CODE != 'it' ) {
 			$term_id = apply_filters( 'wpml_object_id', $term->term_id, 'webmapp_category', false, 'it'  );
-			$lang = ICL_LANGUAGE_CODE;
 		} else {
 			$term_id = $term->term_id;
 		}
@@ -80,7 +79,6 @@ function webmap_custom_map_scripts() {
 
 	wp_localize_script( 'custom-map', 'data', $data );
 	wp_localize_script( 'custom-map', 'terms_icon', $icons );
-	wp_localize_script( 'custom-map', 'lang', $lang );
 	wp_enqueue_script( 'custom-map' );
 
 }
