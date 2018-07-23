@@ -72,8 +72,13 @@
           }
 
           if (data.no_app === 'true') {
-            marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties["addr:street"] + ' ' + e.properties["addr:housenumber"] )
-
+            if ( e.properties["addr:street"] !== undefined && e.properties["addr:housenumber"] !== undefined ) {
+              marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties["addr:street"] + ' ' + e.properties["addr:housenumber"] )
+            } else if ( e.properties["address"] !== undefined ) {
+              marker.bindPopup('<strong>' + e.properties.name + '</strong><br />' + e.properties["address"] )
+            } else {
+              marker.bindPopup('<strong>' + e.properties.name + '</strong>' )
+            }
           }
           else {
             marker.on('click', function () {
