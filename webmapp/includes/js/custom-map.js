@@ -393,10 +393,12 @@
         marker = L.marker([lat, lng]).addTo(map)
       }
 
-      marker.on('click', function () {
-        $('body').prepend(modal)
-        $('#modal-map iframe').height($(window).height() * 80 / 100)
-      });
+      if (data.click_iframe === 'true') {
+        marker.on('click', function () {
+          $('body').prepend(modal)
+          $('#modal-map iframe').height($(window).height() * 80 / 100)
+        });
+      }
 
     }
 
